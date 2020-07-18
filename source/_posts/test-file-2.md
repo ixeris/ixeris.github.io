@@ -19,9 +19,11 @@ hexo clean
 hexo g -d
 {% endcodeblock %}
 
-### 迁移步骤：
+### 更换设备后的迁移步骤：
 {% codeblock %}
 git clone -b hexo https://ry
 npm install 
-\# 补充安装插件
+# 补充安装其他必要插件
+……
 {% endcodeblock %}
+SSH可能需要重新配置，或从原设备上备份
