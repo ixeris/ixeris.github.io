@@ -606,7 +606,7 @@ valine:
   enable: true
   appId: AJeWzRDzDd1nIVBvCFByYyme-gzGzoHsz
   appKey: smKfjSLgbMKmQUG2DeaBX7N6
-  placeholder: 请在这里输入评论ヾ(･ω･)ﾉｼ&#10;&#10;* 不介意的话请填一下昵称（非必填项），让我认得你是谁^^ # Comment box placeholder
+  placeholder: 请在这里输入评论ヾ(･ω･)ﾉｼ   * 不介意的话请填一下昵称（非必填项），让我认得你是谁^^ # Comment box placeholder
   avatar: mm # Gravatar style
   meta: [nick, mail, link] # Custom comment header
   pageSize: 10 # Pagination size
