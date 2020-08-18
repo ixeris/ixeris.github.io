@@ -32,5 +32,6 @@ date: 2020-07-18 16:18:56
 - 魔法使之梦与幻想的尽头 （fgr中心，路人文）
 - 金色眼睛 （因缘）
 -  {% post_link griffon-claws 狮鹫钩爪%}（oz, fgr和as）
+-  {% post_link suzumiya-innen 无题%}（因缘，讲梗草稿，凉宫梗）
 
 
