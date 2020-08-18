@@ -14,7 +14,7 @@ date: 2020-07-18 16:18:56
   - April 1st is
   - April 8th is
   - May 5th is
-  - August 18th is
+  -  {% post_link August-18th-is August 18th is%}
 <br><br>
 
 - 短篇集2
