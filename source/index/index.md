@@ -15,7 +15,7 @@ date: 2020-07-18 16:18:56
   - April 8th is
   - May 5th is
   -  {% post_link August-18th-is August 18th is%}
-  -  {% post_link September-23th-is September 23th is%}
+  -  {% post_link September-23th-is September 23th is（施工中）%}
 <br><br>
 
 - 短篇集2
@@ -35,5 +35,6 @@ date: 2020-07-18 16:18:56
 -  {% post_link griffon-claws 狮鹫钩爪%}（oz, fgr和as）
 -  {% post_link suzumiya-innen 无题%}（因缘，讲梗草稿，凉宫梗）
 -  {% post_link to-the-lake 到湖边去%}（rcr, white; snow, msr, mcr）
+-  {% post_link a-piece-of-realgar 雄黄驱邪法%}（因缘，讲梗草稿）
 
 
