@@ -11,7 +11,7 @@ BGM: [Singing in the Rain](https://www.xiami.com/song/8FZ2yBf7289)
 
 ※出于个人兴趣的草率翻译，如果感兴趣欢迎购入书刊支持作者
 ※含有本篇重大剧透，请全线通关本篇后阅读
-※联动前篇：May 5th is （以后补档）
+※联动前篇：{% post_link May-5th-is May 5th is%}
 ※[原作的安利帖](https://weibo.com/5544174340/Ip9EIbmus)
 
 <!--more-->
