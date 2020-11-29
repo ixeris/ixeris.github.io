@@ -36,6 +36,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link animal-friends 动物朋友%}（北国师兄弟，讲梗草稿）
 
 <br>
+
 **因缘**
 - 金色眼睛 （因缘）
 -  {% post_link suzumiya-innen 无题%}（因缘，讲梗草稿，凉宫梗）
@@ -43,6 +44,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link the-odd-eyed-knight 异色双眼的骑士%}（因缘）
 
 <br>
+
 **其他**
 -  {% post_link to-the-lake 到湖边去%}（rcr, white; snow, msr, mcr）
 
