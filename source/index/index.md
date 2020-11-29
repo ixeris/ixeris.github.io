@@ -26,16 +26,23 @@ date: 2020-07-18 16:18:56
  <br>
  
 ### 魔法使いの約束
-……不是很好分类，标注一下主要角色算了
+……只能粗糙地分一下类
 
+**初代/二代北国家庭**
 - 雪落在城堡屋顶上 （央国父子）
 - 候鸟 （fgr中心，oz和南国人）
 - 魔法使之梦与幻想的尽头 （fgr中心，路人文）
-- 金色眼睛 （因缘）
 -  {% post_link griffon-claws 狮鹫钩爪%}（oz, fgr和as）
+-  {% post_link animal-friends 动物朋友%}（北国师兄弟，讲梗草稿）
+
+<br>
+**因缘**
+- 金色眼睛 （因缘）
 -  {% post_link suzumiya-innen 无题%}（因缘，讲梗草稿，凉宫梗）
--  {% post_link to-the-lake 到湖边去%}（rcr, white; snow, msr, mcr）
 -  {% post_link a-piece-of-realgar 雄黄驱邪法%}（因缘，讲梗草稿）
 -  {% post_link the-odd-eyed-knight 异色双眼的骑士%}（因缘）
 
+<br>
+**其他**
+-  {% post_link to-the-lake 到湖边去%}（rcr, white; snow, msr, mcr）
 
