@@ -15,7 +15,7 @@ date: 2020-07-18 16:18:56
   - April 8th is
   -  {% post_link May-5th-is May 5th is%}
   -  {% post_link August-18th-is August 18th is%}
-  -  {% post_link September-23th-is September 23th is（施工中）%}
+  -  {% post_link September-23th-is September 23th is%}
 <br><br>
 
 - 短篇集2
