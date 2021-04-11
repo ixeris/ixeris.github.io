@@ -44,6 +44,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link a-piece-of-realgar 雄黄驱邪法%}（因缘，讲梗草稿）
 -  {% post_link the-odd-eyed-knight 异色双眼的骑士%}（因缘）
 -  {% post_link honour-of-a-knight 骑士不死于徒手%}（因缘，讲梗草稿，吸血鬼梗）
+-  {% post_link pierce-the-heart 刺入心脏%}（因缘，讲梗草稿，不知道哪个世界观的机器人梗）
 
 <br>
 
