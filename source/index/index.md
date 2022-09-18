@@ -8,6 +8,10 @@ date: 2020-07-18 16:18:56
 
 ### 図書室のネヴァジスタ（翻译）
 出于个人兴趣的草率翻译，错漏之处欢迎指出，如果感兴趣欢迎购入书刊支持作者
+<<<<<<< HEAD
+=======
+（有些是好久之前翻的了，不是很有信心回顾……可能将来有机会重新订正一下（……））
+>>>>>>> 6f1ad20 (change origin to SSH)
 
 - 短篇集1
   - January 29th is
@@ -15,7 +19,12 @@ date: 2020-07-18 16:18:56
   - April 8th is
   -  {% post_link May-5th-is May 5th is%}
   -  {% post_link August-18th-is August 18th is%}
+<<<<<<< HEAD
   -  {% post_link September-23th-is September 23th is%}
+=======
+  -  {% post_link September-23th-is September 23th is%}  
+  -  {% post_link the-unbirthday-party The Unbirthday Party%}
+>>>>>>> 6f1ad20 (change origin to SSH)
 <br><br>
 
 - 短篇集2
@@ -35,6 +44,21 @@ date: 2020-07-18 16:18:56
 -  {% post_link griffon-claws 狮鹫钩爪%}（oz, fgr和as）
 -  {% post_link animal-friends 动物朋友%}（北国师兄弟，讲梗草稿）
 -  {% post_link Axxxxx-in-wonderland Axxxxx in Wonderland%}（央国父子）
+<<<<<<< HEAD
+=======
+-  {% post_link far-side-of-the-moon 月之背面%}（央国父子，讲梗草稿）
+-  {% post_link an-old-friend 長い付き合いのアレについて%}（oz中心概念小漫画）
+-  {% post_link The-Giant-s-Garden 巨人的花园%}（央国父子，路人文，原作轴线的某个分支未来捏造）
+-  {% post_link a-bizarre-confinement 史上最离奇监禁事件%}（北国师兄弟，讲梗草稿）
+-  {% post_link Ideal-family 幸福家庭%}（fgr中心）
+-  {% post_link word-chain 词语接龙%}（北国二代家庭，文字游戏小漫画）
+-  {% post_link pull-the-chestnuts-out-of-the-fire 火中取栗%}（北国初代家庭）
+-  {% post_link old-maid 抽鬼牌%}（北国初代二代家庭）
+-  {% post_link the-quest-of-the-holy-grail 寻找圣杯%}（央国父子）
+-  {% post_link happy-birthday 生日快乐%}（oz中心）
+-  {% post_link the-deer 鹿%}（fgr中心，贤者第一人称）
+
+>>>>>>> 6f1ad20 (change origin to SSH)
 
 <br>
 
@@ -45,9 +69,22 @@ date: 2020-07-18 16:18:56
 -  {% post_link the-odd-eyed-knight 异色双眼的骑士%}（因缘）
 -  {% post_link honour-of-a-knight 骑士不死于徒手%}（因缘，讲梗草稿，吸血鬼梗）
 -  {% post_link pierce-the-heart 刺入心脏%}（因缘，讲梗草稿，不知道哪个世界观的机器人梗）
+<<<<<<< HEAD
+=======
+-  {% post_link a-dream-from-Skuld 斯寇蒂之梦%}（因缘，原作背景）
+-  {% post_link red-balloon 红气球%}（因缘，原作背景）
+-  {% post_link keep-my-promise 言信行果%}（因缘，讲梗草稿，现代背景+奇幻要素）
+-  {% post_link to-the-beginning 原点倒计时%}（因缘）
+>>>>>>> 6f1ad20 (change origin to SSH)
 
 <br>
 
 **其他**
 -  {% post_link to-the-lake 到湖边去%}（rcr, white; snow, msr, mcr）
+<<<<<<< HEAD
+=======
+-  {% post_link ghost-in-the-infirmary 幽灵独白%}（fgr+晶♀，讲梗草稿）
+-  {% post_link moonshine 月亮酒%}（c骑士, mcr）
+-  {% post_link Dis-Illusion 浮生一梦%}（fst）
+>>>>>>> 6f1ad20 (change origin to SSH)
 

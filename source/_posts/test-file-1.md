@@ -54,6 +54,11 @@ categories:
 
 <center>居中测试</center>
 
+<<<<<<< HEAD
+=======
+<h3 align = "center">标题居中测试</h3>
+
+>>>>>>> 6f1ad20 (change origin to SSH)
 ---
 
 >引用测试
@@ -99,4 +104,9 @@ categories:
    2. 外送七份能送吗
       - 多送一份也不要紧
 	  - 我们经纪人可以吃
+<<<<<<< HEAD
+=======
+	  
+
+>>>>>>> 6f1ad20 (change origin to SSH)
    
