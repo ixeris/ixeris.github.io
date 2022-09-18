@@ -2,7 +2,6 @@
 
 cd /d e:\rblog
 git fetch
-git reset --hard HEAD
-git merge origin/hexo
+git reset --hard origin/hexo
 
 pause
