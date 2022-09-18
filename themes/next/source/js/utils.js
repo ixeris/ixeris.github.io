@@ -361,7 +361,4 @@ NexT.utils = {
     return intersectionObserver;
   }
 };
-<<<<<<< HEAD
-=======
 
->>>>>>> 6f1ad20 (change origin to SSH)
