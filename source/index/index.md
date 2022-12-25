@@ -50,6 +50,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link happy-birthday 生日快乐%}（oz中心）
 -  {% post_link the-deer 鹿%}（fgr中心，贤者第一人称）
 -  {% post_link the-echoes-of-peach-blossom 桃花遗韵%}（白雪系相关，半路人文，桃花武侠pa的后传短篇）
+-  {% post_link ice-heart 冰雪之心%}（fgr中心，但可能是北师兄弟）
 
 
 <br>
