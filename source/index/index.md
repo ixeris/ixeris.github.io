@@ -67,6 +67,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link red-balloon 红气球%}（因缘，原作背景）
 -  {% post_link keep-my-promise 言信行果%}（因缘，讲梗草稿，现代背景+奇幻要素）
 -  {% post_link to-the-beginning 原点倒计时%}（因缘）
+-  {% post_link water-of-life 生命之水%}（因缘，三毛钱童话）
 
 <br>
 
