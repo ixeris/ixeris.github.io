@@ -52,7 +52,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link the-echoes-of-peach-blossom 桃花遗韵%}（白雪系相关，半路人文，桃花武侠pa的后传短篇）
 -  {% post_link ice-heart 冰雪之心%}（fgr中心，但可能是北师兄弟）
 -  {% post_link song-of-songs 精灵之歌%}（oz中心）
-
+-  {% post_link in-the-same-boat 欲渔遇雨%}（北师兄弟，愚人节海盗pa私设）
 
 <br>
 
