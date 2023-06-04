@@ -53,6 +53,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link ice-heart 冰雪之心%}（fgr中心，但可能是北师兄弟）
 -  {% post_link song-of-songs 精灵之歌%}（oz中心）
 -  {% post_link in-the-same-boat 欲渔遇雨%}（北师兄弟，愚人节海盗pa私设）
+-  {% post_link paradise-lost 失乐园%}（北师兄弟）
 
 <br>
 
@@ -76,4 +77,5 @@ date: 2020-07-18 16:18:56
 -  {% post_link ghost-in-the-infirmary 幽灵独白%}（fgr+晶♀，讲梗草稿）
 -  {% post_link moonshine 月亮酒%}（c骑士, mcr）
 -  {% post_link Dis-Illusion 浮生一梦%}（fst）
+-  {% post_link alouette 云雀%}（as, hs）
 
