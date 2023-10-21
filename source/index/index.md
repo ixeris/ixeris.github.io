@@ -58,6 +58,9 @@ date: 2020-07-18 16:18:56
 -  {% post_link a-button 一颗纽扣%}（北师兄弟）
 -  {% post_link genesis 愚者%}（北师兄弟）
 
+翻译：
+-  {% post_link birthday BIRTHDAY%}（fgr中心，路人文）
+
 <br>
 
 **因缘**
