@@ -57,6 +57,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link spring-snow 春雪%}（北师兄弟，成年oz+幼fgr）
 -  {% post_link a-button 一颗纽扣%}（北师兄弟）
 -  {% post_link genesis 愚者%}（北师兄弟）
+-  {% post_link and-then-we-bid-farewell 三次忌日%}（北师兄弟）
 
 翻译：
 -  {% post_link birthday BIRTHDAY%}（fgr中心，路人文）
