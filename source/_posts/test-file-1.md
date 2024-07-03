@@ -52,6 +52,8 @@ categories:
 
 <font size=5>字号调整测试，这是size=5（html语法）</font>
 
+<font face="仿宋">字体调整测试，这是仿宋（html语法）</font>
+
 <center>居中测试</center>
 
 <h3 align = "center">标题居中测试</h3>
