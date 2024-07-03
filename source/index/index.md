@@ -59,7 +59,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link genesis 愚者%}（北师兄弟）
 -  {% post_link and-then-we-bid-farewell 三次忌日%}（北师兄弟）
 -  {% post_link friends 朋友%}（北师兄弟）
--  {% post_link midnight-tea-party 午夜茶会%}（北师兄弟）
+-  {% post_link midnight-tea-party 午夜茶会%}（北国初代家庭/北师兄弟）
 
 翻译：
 -  {% post_link birthday BIRTHDAY%}（fgr中心，路人文）
