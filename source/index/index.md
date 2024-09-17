@@ -88,3 +88,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link Dis-Illusion 浮生一梦%}（fst）
 -  {% post_link alouette 云雀%}（as, hs）
 
+<br>
+
+**非同人**
+- {% post_link mhyk-ecology 魔法猫生态学资料%}（官方设定生物/生态相关信息整理）

@@ -84,6 +84,9 @@ categories:
 
 ![](penguin_squ.jpg)
 
+这是两张更改大小的企鹅图片
+<img src="penguin_squ.jpg" width = 100> 
+<img src="penguin_squ.jpg" width = 20%> 
 
 
 ---
