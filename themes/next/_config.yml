@@ -118,6 +118,7 @@ menu:
   #about: /about/ || fa fa-user
   categories: /categories/ || fa fa-th
   tags: /tags/ || fa fa-tags
+  魔法猫生态学资料: mhyk-ecology.html || fa fa-archive
   #archives: /archives/ || fa fa-archive
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -604,8 +605,8 @@ changyan:
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
   enable: true
-  appId: AJeWzRDzDd1nIVBvCFByYyme-gzGzoHsz
-  appKey: smKfjSLgbMKmQUG2DeaBX7N6
+  appId: hY4mCfXEKgTozrQsFGcEqdQM-MdYXbMMI
+  appKey: zanAvrS2jJ5m9Tovv5bznVYb
   placeholder: 请在这里输入评论ヾ(･ω･)ﾉｼ&#10;不介意的话请填一下昵称（非必填项） # Comment box placeholder
   avatar: mm # Gravatar style
   meta: [nick, mail, link] # Custom comment header
