@@ -1,32 +1,2708 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<html>
+<html lang="en">
 <head>
- <meta charset="UTF-8">
-</head>
-<body>
- <p>
- 	<a href="https://ixeris.github.io/">回到主页</a>
-	<hr>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>魔法猫生态学资料</title>
+	<style>
 
- </p>
- <h1>魔法猫生态学资料</h1>
- <p>
-	您好，这里目前是一个空白页面。因为博客自带文章模板不方便展示大量表格数据，所以考虑单独做成一个页面，内容如标题。<br>
-	但是从零开始做html还挺麻烦的，等我想想怎么弄zzzZZZ<br>
-	<br>
-	目前已整理的信息可以在普通的文章中查看：<br>
-	<a href="https://ixeris.github.io/mhyk-ecology/"><b>>>>魔法猫生态学资料<<<</b></a>
-	<br>
-	<br>
-	<br>
-	<br>
-</p>
-	<hr>
-	<img src=oz_purple.png /><br>
-	来都来了看看袄<br>
- <p>
- </p>
+		body {
+			display: flex;
+			margin: 0;
+		}
+
+		.sidebar {
+			width: 200px;
+			padding: 20px;
+			color: white;
+			background-color: #222222;
+			position: fixed;
+			top: 0;
+			left: 0;
+			margin-top: 0px;
+			height: 100%;
+			overflow-y: auto;
+		}
+
+		.sidebar a {
+			margin-top: 0;
+			color: white;
+			text-decoration: none;
+    	}
+		
+		.sidebar li {
+    		margin: 10px 0;
+    	}
+		
+		.content {
+			margin-left: 250px;
+			padding: 0px 20px;
+			flex-grow: 1;
+		}
+
+		div{
+			margin:20px 0px 20px 0px;
+		}
+		
+		h2{
+			margin-top: 0px;
+			margin-bottom: 0px;
+			padding-top: 20px;
+		}
+
+		table, tr, td{
+			border: 1px solid gray;
+			border-collapse: collapse;
+			font-size: 14px;
+			
+		}
+
+		table{
+			max-width: 1400px;
+		}
+
+		tr, td{
+			padding: 10px 5px 10px 5px;
+
+		}
+
+		.tableHeader{
+			font-weight:bold;
+			background-color: lightgrey;
+			position: sticky;
+			top:0;
+			z-index:10;
+		}
+
+		.hidden {
+  		  display: none;
+  		}
+
+		.notes{
+			font-size: 14px;
+			color: gray; 
+		}
+			
+	</style>
+
+</head>
+
+<body>
+
+	<div class="sidebar">
+		<h2>目录</h2>
+		<ul>
+			<li><a href="#introduction">简介</a></li>
+			<li><a href="#main">剧情信息</a></li>
+			<li><a href="#ingredients">食材一览</a></li>
+			<li><a href="#spots">地点名录</a></li>
+		</ul>
+		<h3><a href="https://ixeris.github.io/">回到主页</a></h3>
+	</div>
+
+	<div class="content">
+
+		<div id="introduction">
+
+			<h1><img src="./img/blacklily.png" height="40px" style="vertical-align: middle;">魔法猫生态学资料</h1>
+			<p>
+				※部分物种未提及名称，为方便阅读，按特征摘要为中文简称，用“（暂称）”注明<br>
+				※描述内容（日文）主要摘自剧情原文，为使语句连贯有少量改写<br>
+				※中文翻译仅供参考，以官方版为准<br>
+				※物种分类暂无明确标准，后续可能优化<br>
+				<br>
+			</p>
+
+			<p class="notes">
+				M————主线故事<br>
+				S/SE——地点主线/地点ep<br>
+				Ch/Sh——角色ep/亲爱故事<br>
+				CS/CE——卡故事/卡ep<br>
+				E/Elg——活动故事/活动登录故事<br>
+			</p>
+
+		</div>
+
+		<div id="main">
+			<h2>剧情信息</h2>
+			<p class="notes">*长期更新补充<br></p>
+
+			<label for="filterInputText_main">筛选：</label>
+			<input type="text" id="filterInputText_main" onkeyup="filterTableByText('main')" placeholder="输入筛选文本">
+			<br>
+			地点：
+			<label><input id="央" type="checkbox" name="country" checked="checked" value=3>央</label>
+			<label><input id="北" type="checkbox" name="country" checked="checked" value=4>北</label>
+			<label><input id="东" type="checkbox" name="country" checked="checked" value=5>东</label>
+			<label><input id="西" type="checkbox" name="country" checked="checked" value=6>西</label>
+			<label><input id="南" type="checkbox" name="country" checked="checked" value=7>南</label>
+			<button id="checkAll">全选</button>
+			<button id="checkNone">清空</button>
+			<br>
+			<span class="notes">（国别筛选以明确有出现记录（★）为准；若全选国别则显示所有行）</span>
+			<br>
+
+			<table id="mainTable">
+				<tr class="tableHeader">
+					<td>序号</td>
+					<td>名称</td>
+					<td>出处</td>
+					<td>央</td>
+					<td>北</td>
+					<td>东</td>
+					<td>西</td>
+					<td>南</td>
+					<td>出现地点</td>
+					<td>种类</td>
+					<td>魔法生物</td>
+					<td>介绍</td>
+				</tr>
+				<tr>
+					<td>S-01</td>
+					<td>サラマンダー<br><font color=DarkCyan>火蜥蜴</font></td>
+					<td>地点主线《オズの爪痕》(5)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>オズの爪痕<br><font color=DarkCyan>奥兹的爪痕</font></td>
+					<td>精灵</td>
+					<td>★</td>
+					<td>トカゲに似た火の精霊だ。<br><font color=DarkCyan>与蜥蜴相似的火精灵。</font></td>
+				</tr>
+				<tr>
+					<td>S-02</td>
+					<td>ラルヴァ<br><font color=DarkCyan>恶灵</font></td>
+					<td>地点主线《グランヴェル城》(6)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>グランヴェル城<br><font color=DarkCyan>格兰威尔城</font></td>
+					<td>精灵</td>
+					<td>★</td>
+					<td>冥府に行きそびれた彷徨う霊魂が、悪霊となり、人を呪い殺すようにする。<br><font color=DarkCyan>未能前往冥府的彷徨灵魂化作恶灵，意图将人诅咒致死。</font></td>
+				</tr>
+				<tr>
+					<td>S-03</td>
+					<td>サーペント<br><font color=DarkCyan>巨蛇</font></td>
+					<td>地点主线《栄光の街》(1)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>栄光の街<br><font color=DarkCyan>荣光之街</font></td>
+					<td>动物</td>
+					<td>★</td>
+					<td>巨大な蛇の怪物。<br><font color=DarkCyan>巨大的蛇怪。</font></td>
+				</tr>
+				<tr>
+					<td>S-04</td>
+					<td>崩壊星の石/祝福の玉<br><font color=DarkCyan>崩坏星石/祝福之玉</font></td>
+					<td>地点主线《既知の遺跡》(1,4)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>既知の遺跡<br><font color=DarkCyan>已知的遗迹</font></td>
+					<td>矿物</td>
+					<td>/</td>
+					<td>ピカピカの黒い石で、鏡のように光を反射して、虹のような模様が入っている。<br>魔法生物や魔法使いを高揚させ、興奮させ、恍惚させ、くつろがせる。治癒や心身解放に用いるものもいるが、場合によっては、気が荒ぶって、凶暴化することもある。<br><font color=DarkCyan>闪闪发亮的黑色石头，像镜面一样反射着光，映出七彩的花纹。<br>能够让魔法生物或魔法使精神提振、兴奋激动、神志不清、状态放松。有人将它用于治疗或身心放松，但某些情况下它也会导致凶猛暴躁。</font></td>
+				</tr>
+				<tr>
+					<td>S‐04b</td>
+					<td>ドラゴン<br><font color=DarkCyan>龙</font></td>
+					<td>地点主线《既知の遺跡》(5)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>既知の遺跡<br><font color=DarkCyan>已知的遗迹</font></td>
+					<td>动物</td>
+					<td>★</td>
+					<td>大型の飛行機ほどの大きさの生き物。家を丸呑みできそうな大きな顔。神秘的な青灰の鱗の色。長いひげ。神秘的な萌黄色の巨大な瞳。<br><font color=DarkCyan>体型有大型飞机那么大的生物。脸大得像是能吞下整栋房子。神秘的青灰色鳞片。长长的胡须。神秘的黄绿色的巨大眼睛。</font></td>
+				</tr>
+				<tr>
+					<td>S-05</td>
+					<td>氷の森の木<br><font color=DarkCyan>冰之森的树</font></td>
+					<td>地点主线《氷の森》(1)</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>氷の森<br><font color=DarkCyan>冰之森</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>スタンドグラス用の特殊な鉛が、氷の森の木から採れる。根から吸い上げた水に混じった鉱物が、幹の中で宝石になる。<br><font color=DarkCyan>从冰之森的树上可以采集到制作彩绘玻璃用的特殊的铅。从根部吸上来的水中含有的矿物质会在树干中结成宝石。</font></td>
+				</tr>
+				<tr>
+					<td>S-05b</td>
+					<td>グラキエスの雪の魔神<br><font color=DarkCyan>冰之雪魔神<br>(*グラキエス=Glacies=冰，拉丁语)</font></td>
+					<td>地点主线《氷の森》(2)</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>氷の森<br><font color=DarkCyan>冰之森</font></td>
+					<td>异生物</td>
+					<td>?</td>
+					<td>雪だるまのように見える。<br><font color=DarkCyan>看起来像雪人。</font></td>
+				</tr>
+				<tr>
+					<td>S-06</td>
+					<td>マーシア<br><font color=DarkCyan>玛西亚</font></td>
+					<td>地点主线《氷の街》(2)</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>氷の街<br><font color=DarkCyan>冰之街</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>大きな木。果実は握りこぶし大の、硬そうな赤い実。実を割り開くと、中には、ルビーのような小粒の実がぎっしりと詰まっている。ざくろの実の方が近い。<br>身震いするほど酸っぱかった。栄養たっぷりで、味が濃い。丈夫で、暑い場所でも、寒い場所でも実。子宝の実とも呼ばれておる。マーシアの実のように、街にぎっしり子供があふれるように。<br><font color=DarkCyan>高大的树。红色坚硬的果实有拳头大小。将它剖开，里面满是红宝石一样的果实颗粒。比较像是石榴。<br>酸得让人打颤。营养丰富，滋味浓郁。生命力顽强，无论环境冷热都能结果。又被称为“爱子果”，寓意是镇上能够像玛西亚果实一样满是小孩子。</font></td>
+				</tr>
+				<tr>
+					<td>S-07</td>
+					<td>死の湖<br><font color=DarkCyan>死之湖</font></td>
+					<td>地点主线《死の湖》(5,6)</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>死の湖<br><font color=DarkCyan>死之湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>かつて、死の湖に住んでいた太古の生物かもしれないが、骨だけが残る。広大な湖すら小さく見えるほど巨大な骨。頭蓋骨には三本の骨、ドラゴンのような骨格をしていて、空を覆い尽すような、翼の骨も持っている。<br>スノウとホワイトが生まれた頃には、とうに滅んでいた生物だろう。名前がないが、ミスラに名前をつけさせたら、「死の湖」っと。<br><font color=DarkCyan>或许是远古时代曾经生活在死之湖的生物，但现在只剩下了骨头。骨头巨大得令广大的湖面都显得窄小。头盖骨有三块，骨架像是龙一样，也有仿佛能遮蔽天空的翅膀骨骼。<br>大概在斯诺与怀特出生时就早已灭绝了，也没有名字。密斯拉将之命名为“死之湖”。</font></td>
+				</tr>
+				<tr>
+					<td>S-08</td>
+					<td>夢の森の木/夢幻の木<br><font color=DarkCyan>梦之森的树/梦幻树</font></td>
+					<td>地点主线《夢の森》(1,2)<br>夢の森-地点ep《スポットの名物》</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>夢の森<br><font color=DarkCyan>梦之森</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>森の木々が放出する致死の毒が、奇妙で甘美な夢を見せる。強い魔力がないと、生きて出られない。<br>死体を養分にして、夢の森の木はさらに繁殖して、どんどん、毒の胞子を吐き出す。<br>夢幻の木の枝を燃やすと幸せな幻影が見られる。ほんの束の間、手にした者の一番の願望を映し出す。手折って持ち帰ると人間たちに高く売れるらしい。マッチに加工して小銭を稼ぐ者がおる。<br><font color=DarkCyan>森林中的树木释放出的致命毒素会让人见到奇妙甜美的梦。除非魔力很强，否则无法生还。<br>梦之森的树木以尸体为养分进一步繁殖，不断释放出带毒的孢子。<br>点燃梦幻树的树枝，就能看到幸福的幻影。它能短暂地映出持有者最大的愿望。采摘下来的枝干可以以高价卖给人类。也有人把它加工成火柴，赚些零钱。</font></td>
+				</tr>
+				<tr>
+					<td>S-09</td>
+					<td>イェストゥルム<br><font color=DarkCyan>蝙蝠<br>（*ystlum，威尔士语）</font></td>
+					<td>地点主线《時の洞窟》(3,4)</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>時の洞窟<br><font color=DarkCyan>时之洞窟</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>人語を話す小型翼竜と言われていますが、コウモリだ。瞳は緑色。<br>聞いた音を記録して、群れの交信に使う。音だけが次の世代に、延々と引き継がれる。<br><font color=DarkCyan>据说是能说人话的小型翼龙。其实是蝙蝠。眼睛是绿色的。<br>能够记录下听到的声音，用于群体之间的交流。这些声音能够连绵不断地代代传递。</font></td>
+				</tr>
+				<tr>
+					<td>S-10</td>
+					<td>猫噛草<br><font color=DarkCyan>猫咬草</font></td>
+					<td>地点主线《嵐の谷》(3)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>嵐の谷<br><font color=DarkCyan>岚之谷</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>猫が齧る白や紫の草。<br><font color=DarkCyan>猫会啃食的白色或紫色的草。</font></td>
+				</tr>
+				<tr>
+					<td>S-18</td>
+					<td>ヂェン<br><font color=DarkCyan>鸩</font></td>
+					<td>地点主线《病の沼》(4)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>动物</td>
+					<td>★</td>
+					<td>伝説の毒鳥。毒はものすごく強くて、その羽根を水にひたしておくだけで、一滴で人を即死させる毒が作れた。<br>人の姿に化ける。言葉を話せるものたちもいる。魔法の生き物だから、狩ればマナ石も手にいる。<br>病の沼に人と魔法使いが住めるように、フィガロが皆殺しにした。<br>羽根は深い青と黄色と赤が混ざり合ってる。まるで、この沼の夕焼けみたいな色合い。<br><font color=DarkCyan>传说中的毒鸟。毒性很强，仅仅把它的羽毛浸在水里，就能制成足以一滴杀人的毒药。<br>能变化成人的模样。有的个体也能说话。由于是魔法生物，杀死后能得到玛那石。<br>为了让病之沼成为能让人类和魔法使居住的地方，费加罗将它们斩尽杀绝了。<br>羽毛颜色是深蓝色、黄色和红色的混合。仿佛沼泽的夕阳一般。</font></td>
+				</tr>
+				<tr>
+					<td>S-19</td>
+					<td>ソウルフィッシュ<br><font color=DarkCyan>灵魂鱼</font></td>
+					<td>地点主线《ティコ湖》(1)<br>ティコ湖-地点ep《スポットでの発見（２）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>めったに現れない、すばしっこい魚。食べると魔法使いの心に影響する効果があるそう。<br>ティコ湖の辺りにいる銀色のカエル（SE-19b）を餌にすると、キングソウルフィッシュという、珍しくてひときわ大きな魚を釣れることがある。<br><font color=DarkCyan>一种很少见的动作敏捷的鱼。似乎食用后能够影响魔法使的心灵。<br>使用第谷湖畔的银色青蛙（SE-19b）做鱼饵，就有机会钓到名为灵魂鱼王的稀有的巨型鱼。</font></td>
+				</tr>
+				<tr>
+					<td>S-19b</td>
+					<td>人魚<br><font color=DarkCyan>人鱼</font></td>
+					<td>地点主线《ティコ湖》(5)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>动物</td>
+					<td>★</td>
+					<td>雪のような白い肌に、湖面の雲のような銀色の髪を垂らした、絶世の美女だ。銀色の尾がつく。<br>伝説の生き物で、大昔に滅びたはずが、今蘇ったようです。用心深いから、簡単に出てきません。<br><font color=DarkCyan>有着雪白肌肤、银色秀发如同湖面云朵一般的绝世美女。长着银色的尾巴。<br>是传说中的生物，原本应该已经灭绝很久了，但现在似乎又复活了。性格谨慎，不会轻易浮出水面。</font></td>
+				</tr>
+				<tr>
+					<td>SE-01</td>
+					<td>オータムナッツ<br><font color=DarkCyan>秋坚果</font></td>
+					<td>オズの爪痕-地点ep《スポットゆかりの話（２）》</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>オズの爪痕<br><font color=DarkCyan>奥兹的爪痕</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>芋と栗と南瓜の味がする木の実。その実をパンに練り込んで焼いたり、どっさりスープに入れて食べると美味しい。<br><font color=DarkCyan>有着红薯、栗子和南瓜味道的果实。可以将它加在面包的面团里一起烘烤，或是大量放在汤里，都很美味。</font></td>
+				</tr>
+				<tr>
+					<td>SE-05</td>
+					<td>氷の木<br><font color=DarkCyan>冰之树</font></td>
+					<td>氷の森-地点ep《スポットの名物》</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>氷の森<br><font color=DarkCyan>冰之森</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>新芽は枝から取ってもしばらく凍っている。<br><font color=DarkCyan>嫩芽从树枝上摘下来之后还会持续保冷一段时间。</font></td>
+				</tr>
+				<tr>
+					<td>SE-07</td>
+					<td>星海貝<br><font color=DarkCyan>星海贝</font></td>
+					<td>死の湖-地点ep《スポットでの発見》</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>死の湖<br><font color=DarkCyan>死之湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>大きな牡蠣みたい。身がぷりぷりして美味しそう。貝殻の中で星海珠という宝石が生むんだ。真珠に似てて半透明できれいな青い石だ。真珠の百倍は値がある。<br><font color=DarkCyan>像是大只的牡蛎。贝肉丰满紧实，看起来很好吃。贝壳内部会长出叫做星海珠的宝石来。是一种长得像珍珠的半透明蓝色石头，样子很漂亮。价值是珍珠的上百倍。</font></td>
+				</tr>
+				<tr>
+					<td>SE-07b</td>
+					<td>アーチャーフィッシュ<br><font color=DarkCyan>射手鱼</font></td>
+					<td>死の湖-地点ep《楽しい場所》</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>死の湖<br><font color=DarkCyan>死之湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>氷の板に空いた穴に糸を垂らして、口笛か鼻歌すれば、音に反応するアーチャーフィッシュがものすごい勢いで飛び出す。たまに首に刺さって死ぬ。<br><font color=DarkCyan>在冰层上凿出的洞里垂下线，吹口哨或者哼歌，射手鱼就会对声音做出反应，以超猛烈的势头窜出来。偶尔会被它刺中脖子而死。</font></td>
+				</tr>
+				<tr>
+					<td>SE-08</td>
+					<td>夢の森の木2<br><font color=DarkCyan>梦之森的树2</font></td>
+					<td>夢の森-地点ep《スポットの人々》</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>夢の森<br><font color=DarkCyan>梦之森</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>切ると、中がシャボン玉ように表面が虹色に反射している樹。しばらくすると普通の木目に変わる。<br><font color=DarkCyan>砍断后，截面会像肥皂泡一样反射出七彩来。过一会儿就会变成普通的木纹。</font></td>
+				</tr>
+				<tr>
+					<td>SE-08b</td>
+					<td>ナイトメアストーン<br><font color=DarkCyan>梦魇石</font></td>
+					<td>夢の森-地点ep《スポットでの発見》</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>夢の森<br><font color=DarkCyan>梦之森</font></td>
+					<td>矿物</td>
+					<td>/</td>
+					<td>夢の森の木の中にだけできる石。毒と悪夢を取り込んだ宝石だ。<br><font color=DarkCyan>只能在梦之森的树中结出的石头。是封入了毒素与噩梦的宝石。</font></td>
+				</tr>
+				<tr>
+					<td>SE-09</td>
+					<td>（NA）<br><font color=DarkCyan>荧光虫（暂称）</font></td>
+					<td>時の洞窟-地点ep《危険な場所》</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>時の洞窟<br><font color=DarkCyan>时之洞窟</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>緑色に光ってる小さい虫。太陽じゃない光に寄って来る習性がある。<br><font color=DarkCyan>发绿光的小虫。有向除太阳之外的光源聚集的习性。</font></td>
+				</tr>
+				<tr>
+					<td>SE-09b</td>
+					<td>星屑糖<br><font color=DarkCyan>群星糖</font></td>
+					<td>時の洞窟-地点ep《スポットの名物》<br>未開の天文台-地点ep《スポットの名物》<br>（*食材103、501）</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>時の洞窟<br>未開の天文台<br><font color=DarkCyan>时之洞窟<br>荒僻的天文台</font></td>
+					<td>矿物</td>
+					<td>/</td>
+					<td>【時の洞窟】雪に混じって降る珍しい砂糖。<br>【未開の天文台】星の光が強い日に、星の光を当てて作られる。<br>光ってて、口の中でパチパチはじけて、味もそこそこ良い。<br><font color=DarkCyan>【时之洞窟】掺在雪中落下的珍稀的糖。<br>【荒僻的天文台】在星光明亮的日子里，照射星光而制成。<br>会发光，在口中会噼啪绽开，味道也还不错。</font></td>
+				</tr>
+				<tr>
+					<td>SE-10</td>
+					<td>エルダーの木<br><font color=DarkCyan>接骨木</font></td>
+					<td>嵐の谷-地点ep《ブレイクタイム（１）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>嵐の谷<br><font color=DarkCyan>岚之谷</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>精霊が気に入っていて魔除けに使う木だ。花はお茶やシロップに、実はワインになる。<br><font color=DarkCyan>精灵喜欢的植物，可以用于驱魔。花可以做成茶或者糖浆，果实可以酿酒。</font></td>
+				</tr>
+				<tr>
+					<td>SE-10b</td>
+					<td>嵐塩<br><font color=DarkCyan>风暴盐</font></td>
+					<td>嵐の谷-地点ep《スポットの名物》<br>（*食材203）</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>嵐の谷<br><font color=DarkCyan>岚之谷</font></td>
+					<td>矿物</td>
+					<td>/</td>
+					<td>砂嵐みたいに移動する塩。北に向かって移動するので、瓶に入れて方角を調べたり、魔除けや危険察知にも使える。塩だから、料理にも使う。　<br>南向きに移動するのもある。<br><font color=DarkCyan>像沙暴一样移动的盐。因为会向北移动，装在瓶子里就可以确认方向。也可以用于驱魔或探知危险。由于是盐，也可以用于烹饪。<br>也有向南移动的。</font></td>
+				</tr>
+				<tr>
+					<td>SE-11</td>
+					<td>月光樹<br><font color=DarkCyan>月光树</font></td>
+					<td>シャーウッドの森-地点ep《スポットの名物》<br>地点主线《レイタ山脈》(6)<br>（*食材404）</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>シャーウッドの森<br>レイタ山脈<br><font color=DarkCyan>雪伍德森林<br>里伊塔山脉</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>夜になると丸い実が発光して、道案内に使う。実が柔らかくて甘くて、桃みたいな味。食べると体も光る。<br>シャーウッドの森には、特にたくさんある。<br><font color=DarkCyan>圆形的果实会在夜晚发光，可以当做路标。果实柔软甘甜，味道像是桃子。吃下去后身体也会发光。<br>雪伍德森林里有很多。</font></td>
+				</tr>
+				<tr>
+					<td>SE-11b</td>
+					<td>グリーンフラワー<br><font color=DarkCyan>绿花</font></td>
+					<td>シャーウッドの森-地点ep《スポットでの発見》<br>（*食材201、301）</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>シャーウッドの森<br><font color=DarkCyan>雪伍德森林</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>東と南にしか咲かない花。形が可愛い。サラダにして食べると美味しい。<br><font color=DarkCyan>只在东国和南国生长的花。形状很可爱。做成沙拉很好吃。</font></td>
+				</tr>
+				<tr>
+					<td>SE-18</td>
+					<td>ゴイアバ<br><font color=DarkCyan>番石榴<br>（*goiaba，葡萄牙语）</font></td>
+					<td>病の沼-地点ep《スポットの思い出（２）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>白い花が咲く樹。木の実は食べられる。<br><font color=DarkCyan>开白花的树。果实可以吃。</font></td>
+				</tr>
+				<tr>
+					<td>SE-18b</td>
+					<td>（NA）<br><font color=DarkCyan>食欲鱼（暂称）</font></td>
+					<td>病の沼-地点ep《スポットゆかりの話（１）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>浅瀬に裸足で足を突っ込むと、ついばみにくる小魚。欲を食べる。<br><font color=DarkCyan>赤脚踏入浅滩时，会来啄食的小鱼。以欲望为食。</font></td>
+				</tr>
+				<tr>
+					<td>SE-18c</td>
+					<td>ガロン瓜の亜種<br><font color=DarkCyan>加仑瓜的亚种</font></td>
+					<td>病の沼-地点ep《スポットゆかりの話（２）》<br>（*食材104、401、502）</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>本来なら実に酒が入ってる植物だけど、病の沼で育つのは濾過された水を蓄えてる。井戸の水みたいに、飲みやすいし、植物の香りもしない。<br>フィガロが東の国から持って来て植えたんだ。<br><font color=DarkCyan>原本是果实中装着酒的植物，但在病之沼栽培的植株果实中是过滤的水。喝起来像是井水，很容易入口，也没有植物的味道。<br>是费加罗从东国引进移栽的。</font></td>
+				</tr>
+				<tr>
+					<td>SE-18d</td>
+					<td>海の木<br><font color=DarkCyan>海树</font></td>
+					<td>病の沼-地点ep《スポットの名物》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>木の実は大きなビー玉みたいに、青くて透明で綺麗です。波の色と言われる。<br>触ったら柔らかい。少し齧ると果汁が飲める。ラムネの味です。<br><font color=DarkCyan>果实像大颗的玻璃弹珠一样，蓝色透明，很漂亮。据说是海浪的颜色。<br>触感很柔软。可以稍微咬下，喝里面的果汁，味道像柠檬汽水。</font></td>
+				</tr>
+				<tr>
+					<td>SE-18e</td>
+					<td>スペクターフィッシュ<br><font color=DarkCyan>幽灵鱼</font></td>
+					<td>病の沼-地点ep《スポットでの発見》<br>（*食材107、207）</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>身も皮もほとんど透明で、骨が泳いでるように見える魚。群れていても天敵に狙われないから警戒心が薄くて、釣れやすい。<br>焼くと身が白くなる。なかなか美味しい。<br><font color=DarkCyan>身体和表皮都是几乎透明的，看起来像是只有骨头在游动的鱼。即使集聚成群也不会成为天敌的目标，因此警戒心薄弱，很容易钓上来。<br>加热弄熟后身体会变成白色。相当好吃。</font></td>
+				</tr>
+				<tr>
+					<td>SE-19</td>
+					<td>（NA）<br><font color=DarkCyan>发光蒲公英（暂称）</font></td>
+					<td>ティコ湖-地点ep《スポットゆかりの話（１）》</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>白い花。綿毛になると光る。夜に飛ばすと流れ星みたいで綺麗だ。<br>ティコ湖のそばでしか花がつかないらしい。<br><font color=DarkCyan>白色的花。变成绒毛之后会发光。在夜里吹飞它，就像是流星一样，非常漂亮。<br>似乎只有在第谷湖畔才能开花。</font></td>
+				</tr>
+				<tr>
+					<td>SE-19b</td>
+					<td>（NA）<br><font color=DarkCyan>银色青蛙（暂称）</font></td>
+					<td>ティコ湖-地点ep《スポットでの発見（１）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>全身銀色の生き物。少しカエルに似てるかもしれないが、目が真っ黒で大きくて、頭が逆三角形で、痩せてて、二本足で立てそうな体。絵文字の宇宙人に似てる。<br><font color=DarkCyan>浑身银色的生物。也许稍微有点像青蛙，不过眼睛又黑又大，头是倒三角形的，身体很瘦，用两条腿站立。像图画文字里的外星人。</font></td>
+				</tr>
+				<tr>
+					<td>SE-19c</td>
+					<td>（NA）<br><font color=DarkCyan>白雪球藻（暂称）</font></td>
+					<td>ティコ湖-地点ep《スポットの名物（２）》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>珍しい藻。まんまるで、白くて、雪玉みたい。瓶に入れると、ふわふわ浮いたり、沈んだりして、生きてるみたいに動くそうです。<br><font color=DarkCyan>稀有的藻类。圆圆的雪白的样子就像雪球一样。似乎装进瓶子里，就会像活物一样轻飘飘地上下浮沉。</font></td>
+				</tr>
+				<tr>
+					<td>SE-19d</td>
+					<td>（NA）<br><font color=DarkCyan>颜料贝壳（暂称）</font></td>
+					<td>ティコ湖-地点ep《画伯の楽しみ》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>珍しい貝。貝殻を砕いて加工すると、独特の色合いの絵の具にできる。粉は真っ白なんですけど、使う時に様々な色合いが出る。<br><font color=DarkCyan>稀有的贝类。将贝壳粉碎加工，可以制成颜色独特的颜料。粉末本身是白色的，但使用时就会出现各种色彩。</font></td>
+				</tr>
+				<tr>
+					<td>SE-19e</td>
+					<td>コウテイオズオオワシ<br><font color=DarkCyan>皇帝奥兹虎头海雕</font></td>
+					<td>ティコ湖-地点ep《楽しい場所》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>荒野の王様と呼ばれる鷲。かなり大きい。<br><font color=DarkCyan>被称为荒野之王的雕。很大。</font></td>
+				</tr>
+				<tr>
+					<td>SE-20</td>
+					<td>（NA）<br><font color=DarkCyan>借物小人（暂称）</font></td>
+					<td>レイタ山脈-地点ep《スポットゆかりの話（２）》</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>レイタ山脈<br><font color=DarkCyan>里伊塔山脉</font></td>
+					<td>精灵</td>
+					<td>★</td>
+					<td>悪戯好きの妖精。道行く人の持ち物を隠されてしまうことがある。隠れるのが上手いので直接見たことは難しい。<br>なくなったことに気づくまで盗むので、「あれがなくなった、これがなくなった」と言いながら歩くと盗まれない。<br><font color=DarkCyan>喜欢恶作剧的精怪。有时会把路过的人的东西藏起来。因为擅长隐蔽，所以很难直接见到它们。<br>直到对方发觉东西丢了为止，它们都会一直偷下去，因此，只要反过来边走边念“这件东西不见了，那件东西不见了”就不会被偷。</font></td>
+				</tr>
+				<tr>
+					<td>SE-20b</td>
+					<td>（NA）<br><font color=DarkCyan>半透明龙胆（暂称）</font></td>
+					<td>レイタ山脈-地点ep《楽しい場所》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>レイタ山脈<br><font color=DarkCyan>里伊塔山脉</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>リンドウの一種。花びらが半分透き通ってる。葉っぱも花みたい。普段は青い花が咲く、赤い花をつけるのは珍しい。花をつけること自体も珍しい種類だ。<br>花弁が半透明なのは、光を集めやすいため。<br><font color=DarkCyan>龙胆的一种。花瓣是半透明的。叶片也像花一样。通常是开蓝花的，红花的很稀少。开花的品种本身也很稀少。<br>半透明的花瓣是为了更容易收集阳光。</font></td>
+				</tr>
+				<tr>
+					<td>SE-21</td>
+					<td>エア茶<br><font color=DarkCyan>空气茶</font></td>
+					<td>雲の街-地点ep《スポットの名物》<br>（*食材602）</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>雲の街<br><font color=DarkCyan>云之街</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>雲の街の名産で、温めて飲むと喉にいい。声が綺麗になる。<br>お腹に子供がいるときにこのお茶を飲むと、魔法使いが産まれるんだって言い伝えがある。<br><font color=DarkCyan>云之街的名产，温热着喝下去对喉咙有好处。声音也会变得优美。<br>传说怀孕时喝下这种茶，就能生下魔法使。</font></td>
+				</tr>
+				<tr>
+					<td>Ch-07</td>
+					<td>（NA）<br><font color=DarkCyan>七彩青蛙（暂称）</font></td>
+					<td>ミスラ-角色ep《兄弟話》</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の近くの森<br><font color=DarkCyan>魔法舍附近的森林</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>虹色のカエル。牛一頭殺せるぐらいの猛毒を吐きます。迂闊に触ると死ぬ。<br><font color=DarkCyan>七彩的青蛙。能够吐出足以杀死一头牛的剧毒。随随便便乱碰的话会死。</font></td>
+				</tr>
+				<tr>
+					<td>Ch-13</td>
+					<td>サンダースパイス<br><font color=DarkCyan>雷电香料</font></td>
+					<td>ネロ-角色ep《就寝前のティータイム》<br>（*食材601）</td>
+					<td>★</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>北の国<br><font color=DarkCyan>北之国</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>北のやつは見つけにくい分、特別上等だ。<br>ちょっとだけ茶葉に入れると、体があったまってまた美味しい。<br><font color=DarkCyan>生长在北国的很少见，但相应地也特别优质。<br>在茶叶中稍微加入一点，能让身体暖和起来，味道也会更好。<br>（*与烹饪食材的获取地域范围不同）</font></td>
+				</tr>
+				<tr>
+					<td>Ch-14</td>
+					<td>ムーンストーン<br><font color=DarkCyan>月长石</font></td>
+					<td>ムル-角色ep《ムルのアミュレット》</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>西の国<br><font color=DarkCyan>西之国</font></td>
+					<td>矿物</td>
+					<td>/</td>
+					<td>月の名前がつく石。月とは無関係。<br><font color=DarkCyan>以月亮命名的石头。和月亮没有关系。</font></td>
+				</tr>
+				<tr>
+					<td>CS-0678</td>
+					<td>くっつき花<br><font color=DarkCyan>沾身花</font></td>
+					<td>活动《泣き虫うさぎと帽子のフロル》Rutile SSR Card Story (1,2)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>雲の街<br><font color=DarkCyan>云之街</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>お花畑を歩いていると、身体のあちこちについてしまう。<br>ほとんどがピンク色ですが、稀に黄色のもあります。<br><font color=DarkCyan>走在花田中的时候，就会到处沾在身上。<br>大多数是粉色的，偶尔也有黄色的。</font></td>
+				</tr>
+				<tr>
+					<td>CS-1010</td>
+					<td>（NA）<br><font color=DarkCyan>烧伤草药花（暂称）</font></td>
+					<td>活动《悠久想う未知へのカーソス》Riquet SSR Card Story (1,2)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>深淵の谷<br><font color=DarkCyan>深渊之谷</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>光の当たり方で色が変わる。ステンドグラスみたい。感触はふわふわして柔らかい。<br>これがあれば、火傷に効く薬を作れる。<br><font color=DarkCyan>随着光照的方向不同，颜色会发生变化。像彩绘玻璃一样。触感是软绵绵的。<br>可以用于制作烧伤药。</font></td>
+				</tr>
+				<tr>
+					<td>CS-1164</td>
+					<td>（NA）<br><font color=DarkCyan>蒸汽树（暂称）</font></td>
+					<td>活动《紅蓮の大地で遊ぶ愛し子》Owen SR Card Story (1)</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>紅蓮炎山<br><font color=DarkCyan>红莲炎山</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>オレンジの木の実が生ってる。木の枝に、水をかけたら、虹色の煙が出てくる。<br>土地の固有種で、効率よく水分を摂取するために、触れた水を熱して、水蒸気にして浴びるんだ。<br><font color=DarkCyan>生长着橘色的果实。向树枝上浇水，会冒出虹色的烟雾。<br>是当地的特有物种。为了高效地摄取水分，会将接触到的水加热，令自身浸润在生成的水蒸气中。</font></td>
+				</tr>
+				<tr>
+					<td>CE-1111</td>
+					<td>あちち花<br><font color=DarkCyan>烫烫花</font></td>
+					<td>活动《パヴォーネの雫に月を映して》Rutile SR Card EP</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>魔法舎<br><font color=DarkCyan>魔法舍</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>火傷に効く赤い花。<br>南の国では有名な花です。「あちち花を持っておいでよ、蜜をたらりと垂らしてごらん、そしたら、あちちが消えていく。」子供が火傷をすると、大人がこのおまじないの歌を歌いながら、この花の蜜を塗るのが決まりです。<br><font color=DarkCyan>一种能治疗烧烫伤的红色花朵。<br>在南国是种有名的花。“去把烫烫花拿来，把花蜜滴下来吧，这样烫烫就会飞走了。”当孩子被烧伤烫伤时，大人总是会一边唱着这首歌，一边把花蜜涂在伤处上。</font></td>
+				</tr>
+				<tr>
+					<td>E-108</td>
+					<td>バズゴア<br><font color=DarkCyan>巴兹戈亚</font></td>
+					<td>活动《散花奏でる涙のオブリガート》Event Story (2,3)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>ルメール領<br><font color=DarkCyan>勒梅尔领地</font></td>
+					<td>动物</td>
+					<td>★</td>
+					<td>ゆうに二メートルはあろうかという、全身毛むくじゃらの怪物だ。体毛に覆われた四肢は逞しく、特に腕は子供の胴体よりも太い。その腕を前足にして、ゴリラのようにうろうろ歩いている。<br>気まぐれな性格で、大人しい時は無害だけど、何か気に障ったり機嫌が悪くなると、容赦なく暴れて辺り全てを破壊することもある。<br><font color=DarkCyan>足有两米高，全身毛发浓密的怪物。遍覆体毛的四肢十分强壮，尤其胳膊比孩童的躯干还粗。它将胳膊作为前腿，像大猩猩一样四处行走。<br>性格反复无常，平静状态下是无害的，但如果心情不好，就会大肆胡闹起来，将周围的一切破坏殆尽。</font></td>
+				</tr>
+				<tr>
+					<td>E-111</td>
+					<td>にこげ草<br><font color=DarkCyan>绒毛草</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (6)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>不明（ミチルが集めた）<br><font color=DarkCyan>不明（米蒂尔收集的）</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>たんぽぽの綿毛のような、藻のような、緑色のもさもさしたもの。<br><font color=DarkCyan>像是蒲公英的绒毛、又像是水藻的绿色的毛蓬蓬的东西。</font></td>
+				</tr>
+				<tr>
+					<td>E-111b</td>
+					<td>固く、高く、響く声<br><font color=DarkCyan>坚硬高亢回荡之声</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (11,13,26)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>动物</td>
+					<td>?</td>
+					<td>「こん。ききん。こつーん。」と、不思議な鳴き声の鳥。月と同じ、青白い光を発した。<br><font color=DarkCyan>发出“咚、吱吱、砰砰”这样的神奇鸣叫声的鸟。散发着像月亮一样的青白色光芒。</font></td>
+				</tr>
+				<tr>
+					<td>E-111c</td>
+					<td>月待樹<br><font color=DarkCyan>待月树</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (15)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td>?</td>
+					<td>昼は葉が下向きだけれど、真夜中には、上を向いている木。月光に向かって上向きに葉が映える。丈夫で虫がつかない。月光で育つので、水やりの頻度は少なくて平気。<br>南の国ではあまり見かけません。<br><font color=DarkCyan>白天叶片朝下、但到了深夜叶片就会朝上的树。迎着月光扬起的叶片很漂亮。很结实，不会生虫。由于是靠月光生长的，所以不需频繁浇水。<br>在南国很少见。</font></td>
+				</tr>
+				<tr>
+					<td>E-111d</td>
+					<td>ピピスタチオ<br><font color=DarkCyan>开开心果</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (16)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td></td>
+					<td>ナッツ1。<br><font color=DarkCyan>坚果1。</font></td>
+				</tr>
+				<tr>
+					<td>E-111e</td>
+					<td>ウォウォールナッツ<br><font color=DarkCyan>核核桃</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (16)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td></td>
+					<td>ナッツ2。<br><font color=DarkCyan>坚果2。</font></td>
+				</tr>
+				<tr>
+					<td>E-111f</td>
+					<td>ヘヘーゼルナッツ<br><font color=DarkCyan>榛榛子</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (16)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td></td>
+					<td>ナッツ3。<br><font color=DarkCyan>坚果3。</font></td>
+				</tr>
+				<tr>
+					<td>E-111g</td>
+					<td>ペペカンナッツ<br><font color=DarkCyan>碧碧根果</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (16)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td></td>
+					<td>ナッツ4。<br><font color=DarkCyan>坚果4。</font></td>
+				</tr>
+				<tr>
+					<td>E-111h</td>
+					<td>還月草<br><font color=DarkCyan>还月草</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (16)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>不明（シャイロックが持つ）<br><font color=DarkCyan>不明（夏洛克持有）</font></td>
+					<td>植物</td>
+					<td>★</td>
+					<td>浄化に似た効能があるハーブ。飲み続けると、本来の自分に戻ると言われています。生きていて、身についた気質、感情、嗜好、仕草が、洗い流され、魂が復元すると。勿論、ただの迷信です。<br><font color=DarkCyan>具有类似净化的功能的药草。据说持续服用，就能够恢复原本的自我，在迄今为止的人生中所沾染的气质、感情、爱好和举止都会被洗去，灵魂恢复为最初的模样。当然，这只是迷信。</font></td>
+				</tr>
+				<tr>
+					<td>E-111i</td>
+					<td>バクチクカエル<br><font color=DarkCyan>爆竹蛙</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (17)</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>不明（ミスラが持つ）<br><font color=DarkCyan>不明（密斯拉持有）</font></td>
+					<td>动物</td>
+					<td>？</td>
+					<td>順番にバクチクカエルを飲み込んで、どっちの腹で弾けるかゲームに使える。このゲームは北の国には人気があるみたい。<br><font color=DarkCyan>可以用来做游戏，轮流吞下爆竹蛙，看它会在谁的肚子里爆炸。这游戏似乎在北国很受欢迎。</font></td>
+				</tr>
+				<tr>
+					<td>E-111j</td>
+					<td>バツの実<br><font color=DarkCyan>惩罚果实<br>(*バツ=惩罚（罰）;叉号（×）)</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (18)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td>？</td>
+					<td>小さい細長い緑の実。スパイスとかにします。匂いが独特で、土っぽくて、爽やかで、青っぽくもあるけど、柑橘系っぽくもある。齧ったら辛くて、山椒みたい。<br>南の国ではあまり見かけません。<br><font color=DarkCyan>小小的细长的绿色果实。可以做成香料之类的。气味很独特，有种清爽的泥土气味，有些植物的腥味，又有些像柑橘类的气味。咬下去很辣，像是花椒的味道。<br>在南国很少见。</font></td>
+				</tr>
+				<tr>
+					<td>E-111k</td>
+					<td>ククロジ<br><font color=DarkCyan>叶叶钓樟<br>(*不确定，原型可能是クロモジ＝大叶钓樟)</font></td>
+					<td>活动《5th Anniversary 月に愛された世界であなたと》Event Story (19)</td>
+					<td>★</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>?</td>
+					<td>魔法舎の傍の森<br><font color=DarkCyan>魔法舍旁边的森林</font></td>
+					<td>植物</td>
+					<td>？</td>
+					<td>スパイシーでウッディな香りのする、濃い緑の葉っぱ。少し甘くて、すっと軽い、どこか林檎みたいな匂いもする。使い方はハーブティーにしたり、肉料理に入れたり。<br><font color=DarkCyan>带有辛香的木质气味的深绿色叶片。气味有点甜，淡淡的，隐约有点像苹果味儿。用法包括做成药草茶，或是用在肉类菜肴中。</font></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="ingredients">
+			<h2>食材一览</h2>
+			<br>
+
+			<label for="filterInputText_ingre">筛选：</label>
+			<input type="text" id="filterInputText_ingre" onkeyup="filterTableByText('ingre')" placeholder="输入筛选文本">
+			<br>
+			<table id="ingreTable">
+				<tr class="tableHeader">
+					<td>序号</td>
+					<td>画像</td>
+					<td>名称</td>
+					<td>央</td>
+					<td>北</td>
+					<td>东</td>
+					<td>西</td>
+					<td>南</td>
+					<td>主味</td>
+					<td>副味</td>
+					<td>介绍</td>
+				</tr>
+				<tr>
+					<td>101</td>
+					<td><img src="./img/101.webp" width = 100> </td>
+					<td>ヌガー芋<br><font color=DarkCyan>牛轧薯</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>旨味</td>
+					<td>とても甘い。加熱すると旨味が出る<br>お菓子にも使える材料<br><font color=DarkCyan>非常甜。加热后会产生鲜味。<br>也可以用作点心的原料。</font></td>
+				</tr>
+				<tr>
+					<td>102</td>
+					<td><img src="./img/102.webp" width = 100> </td>
+					<td>双子鳥の卵・白<br><font color=DarkCyan>双子鸟的蛋・白</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>旨味</td>
+					<td>甘くて旨い<br>必ず一卵性の双子で生まれる鳥の卵。白い卵と黒い卵の2種類がある<br><font color=DarkCyan>又甜又鲜。<br>出生时必定是同卵双胞胎的鸟下的蛋。有白色蛋和黑色蛋两种。</font></td>
+				</tr>
+				<tr>
+					<td>103</td>
+					<td><img src="./img/103.webp" width = 100> </td>
+					<td>高級星屑糖<br><font color=DarkCyan>高级群星糖</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>甘い</td>
+					<td>塩味<br>香り</td>
+					<td>甘みが強い。たまにしょっぱく感じられる時もあるらしい。香りがいい<br>キラキラ光る砂糖。口の中でパチパチする。高級品である<br><font color=DarkCyan>甜味很重。似乎有时也能尝到咸味。香气宜人。<br>闪闪发亮的糖。在口中会噼啪绽开。是上等货。</font></td>
+				</tr>
+				<tr>
+					<td>104</td>
+					<td><img src="./img/104.webp" width = 100> </td>
+					<td>赤のガロン瓜<br><font color=DarkCyan>红加仑瓜</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>香り</td>
+					<td>甘く、香りがいい<br>ひょうたん型で中に酒が入って成っている瓜<br><font color=DarkCyan>甜味，香气宜人。<br>葫芦形状、内部装着酒的瓜。</font></td>
+				</tr>
+				<tr>
+					<td>105</td>
+					<td><img src="./img/105.webp" width = 100> </td>
+					<td>ラプンツェル豆<br><font color=DarkCyan>野苣豆（长发公主豆）</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>甘い</td>
+					<td>酸味</td>
+					<td>甘い。食べすぎると酸っぱく感じられる<br>食べると髪が伸びる<br><font color=DarkCyan>甜味。吃得太多会感到有酸味。<br>吃下后头发会长长。</font></td>
+				</tr>
+				<tr>
+					<td>106</td>
+					<td><img src="./img/106.webp" width = 100> </td>
+					<td>あったかエバーミルク<br><font color=DarkCyan>温热永久牛奶<br>（*エバーミルク谐音エバミルク（evaporated milk, 淡奶））</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>塩味</td>
+					<td>甘い。ちょっとだけしょっぱい<br>エバーミルクを温めたもの<br><font color=DarkCyan>甜味。有一点点咸。<br>由永久牛奶加热得到。</font></td>
+				</tr>
+				<tr>
+					<td>107</td>
+					<td><img src="./img/107.webp" width = 100> </td>
+					<td>メスのスペクターフィッシュ<br><font color=DarkCyan>雌幽灵鱼</font></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>酸味</td>
+					<td>甘くて少し酸っぱい<br>川魚、身と皮が透明でほぼ骨が泳いでるように見える。メス<br><font color=DarkCyan>甜味，微酸。<br>河鱼，身体和表皮都是透明的，看起来几乎像是只有骨头在游动。雌性。</font></td>
+				</tr>
+				<tr>
+					<td>108</td>
+					<td><img src="./img/108.webp" width = 100> </td>
+					<td>火炎ジャガイモ<br><font color=DarkCyan>火焰马铃薯</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>苦味</td>
+					<td>甘い。皮の部分は少し苦い<br>火山の中でしか育たないジャガイモ。常に熱を発している<br><font color=DarkCyan>甜味。皮的部分稍有些苦。<br>只能在火山之中生长的马铃薯。总是在发热。</font></td>
+				</tr>
+				<tr>
+					<td>109</td>
+					<td><img src="./img/109.webp" width = 100> </td>
+					<td>西の二股ニンジン<br><font color=DarkCyan>西之分岔胡萝卜</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>甘い</td>
+					<td>苦味</td>
+					<td>甘い。たまに苦いものもあるらしい<br>必ず先が二股に分かれているニンジン。西の国でのみ産出される<br><font color=DarkCyan>甜味。似乎偶尔也有苦味的。<br>尖端必定会分为两岔的胡萝卜。只在西国出产。</font></td>
+				</tr>
+				<tr>
+					<td>110</td>
+					<td><img src="./img/110.webp" width = 100> </td>
+					<td>レッドジュエルビーンズ<br><font color=DarkCyan>红宝石豆</font></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>甘い</td>
+					<td>塩味</td>
+					<td>甘いが、よく味わうとしょっぱさもある<br>レッドベリルのような輝きの豆。食べるとおじいちゃん子になると言われている<br><font color=DarkCyan>甜味，不过仔细品味的话也有些咸味。<br>像红色宝石一样闪闪发光的豆子。据说吃了后会变成和爷爷关系亲近的孩子。</font></td>
+				</tr>
+				<tr>
+					<td>111</td>
+					<td><img src="./img/111.webp" width = 100> </td>
+					<td>ドラゴンミート<br><font color=DarkCyan>龙肉</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>甘い</td>
+					<td></td>
+					<td>とても甘い<br>最高級のドラゴンのお肉<br><font color=DarkCyan>非常甜。<br>最高级的龙的肉。</font></td>
+				</tr>
+				<tr>
+					<td>201</td>
+					<td><img src="./img/201.webp" width = 100> </td>
+					<td>東のグリーンフラワー<br><font color=DarkCyan>东之绿花</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>しょっぱい</td>
+					<td>甘味</td>
+					<td>しょっぱい。ただし、花を摘んでしばらくは甘い味がするらしい<br>食べられる花。サラダに。東の国でのみ産出される<br><font color=DarkCyan>咸味。不过，似乎摘下花后一段时间内是甜味的。<br>可以吃的花。用作沙拉。只在东国出产。</font></td>
+				</tr>
+				<tr>
+					<td>202</td>
+					<td><img src="./img/202.webp" width = 100> </td>
+					<td>双子鳥の卵・黒<br><font color=DarkCyan>双子鸟的蛋・黑</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>旨味</td>
+					<td>しょっぱくて旨い<br>必ず一卵性の双子で生まれる鳥の卵。白い卵と黒い卵の2種類がある<br><font color=DarkCyan>又咸又鲜。<br>出生时必定是同卵双胞胎的鸟下的蛋。有白色蛋和黑色蛋两种。</font></td>
+				</tr>
+				<tr>
+					<td>203</td>
+					<td><img src="./img/203.webp" width = 100> </td>
+					<td>嵐塩<br><font color=DarkCyan>风暴盐</font></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>酸味</td>
+					<td>しょっぱい。瓶に入れて長い時間放置すると酸っぱくなる<br>砂嵐のように移動する塩、瓶に入れて魔除けや危機察知に使用することも<br><font color=DarkCyan>咸味。装进瓶里长期放置后会变酸。<br>像沙暴一样移动的盐，也可以装进瓶里用于驱邪和探知危险。</font></td>
+				</tr>
+				<tr>
+					<td>204</td>
+					<td><img src="./img/204.webp" width = 100> </td>
+					<td>半熟グランデトマト<br><font color=DarkCyan>未成熟的巨番茄</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>しょっぱい</td>
+					<td>苦味</td>
+					<td>しょっぱくて苦い<br>かぼちゃサイズのトマト。熟していないのであまり甘くない<br><font color=DarkCyan>又咸又苦。<br>像南瓜一样大的番茄。因为没成熟所以不怎么甜。</font></td>
+				</tr>
+				<tr>
+					<td>205</td>
+					<td><img src="./img/205.webp" width = 100> </td>
+					<td>寒がりコーン<br><font color=DarkCyan>畏寒玉米</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>甘味</td>
+					<td>しょっぱい。ブルブルしている内に食べると甘いらしい<br>皮をむくとしばらくブルブル震えるトウモロコシ<br><font color=DarkCyan>咸味。似乎在它颤抖的期间内食用则会是甜味。<br>剥掉外皮后一段时间内会瑟瑟发抖的玉米。</font></td>
+				</tr>
+				<tr>
+					<td>206</td>
+					<td><img src="./img/206.webp" width = 100> </td>
+					<td>ひんやりエバーミルク<br><font color=DarkCyan>冰凉永久牛奶<br>（*エバーミルク谐音エバミルク（evaporated milk, 淡奶））</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>しょっぱい</td>
+					<td>酸味</td>
+					<td>しょっぱい。人によっては酸っぱく感じることもあるらしい<br>東の山で湧き出ているミルク、植物性<br><font color=DarkCyan>咸味。似乎有一部分人也能尝到酸味。<br>从东之山涌出的牛奶。是植物类产品。</font></td>
+				</tr>
+				<tr>
+					<td>207</td>
+					<td><img src="./img/207.webp" width = 100> </td>
+					<td>オスのスペクターフィッシュ<br><font color=DarkCyan>雄幽灵鱼</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>酸味</td>
+					<td>しょっぱくて少し酸っぱさもある<br>川魚、身と皮が透明でほぼ骨が泳いでるように見える。オス<br><font color=DarkCyan>咸味，微酸。<br>河鱼，身体和表皮都是透明的，看起来几乎像是只有骨头在游动。雄性。</font></td>
+				</tr>
+				<tr>
+					<td>208</td>
+					<td><img src="./img/208.webp" width = 100> </td>
+					<td>オスの宇宙鶏<br><font color=DarkCyan>雄宇宙鸡</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>しょっぱい</td>
+					<td>苦味</td>
+					<td>しょっぱい。少しの苦味がある<br>驚いた顔の鳥。オス<br><font color=DarkCyan>咸味。有一点苦味。<br>一脸震惊的鸡。雄性。</font></td>
+				</tr>
+				<tr>
+					<td>209</td>
+					<td><img src="./img/209.webp" width = 100> </td>
+					<td>オスのオアシスピッグ<br><font color=DarkCyan>雄绿洲猪</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>旨味</td>
+					<td>しょっぱくて旨い<br>水のある所に住む半水棲の豚<br><font color=DarkCyan>又咸又鲜。<br>在有水域的地带居住的半水栖猪。</font></td>
+				</tr>
+				<tr>
+					<td>210</td>
+					<td><img src="./img/210.webp" width = 100> </td>
+					<td>スカイサーモン<br><font color=DarkCyan>天空鲑</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>しょっぱい</td>
+					<td>旨味</td>
+					<td>しょっぱくて旨い<br>周囲の景色に擬態して空を飛ぶサーモン。朝日色に染まったものは縁起物とされる<br><font color=DarkCyan>又咸又鲜。<br>依照周围的景色拟态、在空中飞行的鲑鱼。染上朝阳色的被视为吉祥物。</font></td>
+				</tr>
+				<tr>
+					<td>211</td>
+					<td><img src="./img/211.webp" width = 100> </td>
+					<td>グリフォンの爪<br><font color=DarkCyan>狮鹫之爪</font></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>しょっぱい</td>
+					<td></td>
+					<td>とてもしょっぱい<br>グリフォンの爪。すりつぶして香辛料として使う<br><font color=DarkCyan>非常咸。<br>狮鹫的尖爪。磨碎可以作为香辛料使用。</font></td>
+				</tr>
+				<tr>
+					<td>301</td>
+					<td><img src="./img/301.webp" width = 100> </td>
+					<td>南のグリーンフラワー<br><font color=DarkCyan>南之绿花</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>苦い</td>
+					<td>甘味</td>
+					<td>苦い。よく噛んだら少し甘い<br>食べられる花。サラダに。南の国でのみ産出される<br><font color=DarkCyan>苦味。仔细咀嚼后稍有甜味。<br>可以吃的花。用作沙拉。只在南国出产。</font></td>
+				</tr>
+				<tr>
+					<td>302</td>
+					<td><img src="./img/302.webp" width = 100> </td>
+					<td>ベルナッツ<br><font color=DarkCyan>铃铛坚果</font></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>苦い</td>
+					<td>旨味</td>
+					<td>苦いが旨味がある<br>噛み砕く時に音がする堅果。お腹でも鳴る<br><font color=DarkCyan>苦味，但也有鲜味。<br>嚼碎时会发出声音的坚果。在肚子里也还会响。</font></td>
+				</tr>
+				<tr>
+					<td>303</td>
+					<td><img src="./img/303.webp" width = 100> </td>
+					<td>マカロニ菜<br><font color=DarkCyan>通心粉菜</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>苦い</td>
+					<td>旨味</td>
+					<td>苦い。料理に入れると意外と旨味を引き出す<br>マカロニ状に生えてくる葉野菜<br><font color=DarkCyan>苦味。烹调时加入意外地能产生鲜味。<br>长成通心粉形状的叶菜。</font></td>
+				</tr>
+				<tr>
+					<td>304</td>
+					<td><img src="./img/304.webp" width = 100> </td>
+					<td>もっちり銀河麦<br><font color=DarkCyan>筋道银河面</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>苦い</td>
+					<td>塩味</td>
+					<td>粉のまま食べると苦い。少し塩味もする<br>穂が光るので夜の麦畑が銀河のようになる、銀色混じりの粉。パンに最適<br><font color=DarkCyan>直接食用面粉是苦味。也有一点咸味。<br>由于麦穗会发光，夜间的麦田就像银河一样。面粉中掺着银色。最适合做面包。</font></td>
+				</tr>
+				<tr>
+					<td>305</td>
+					<td><img src="./img/305.webp" width = 100> </td>
+					<td>猫目豆<br><font color=DarkCyan>猫眼豆</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>苦い</td>
+					<td>塩味</td>
+					<td>苦い。ちょっとだけしょっぱい<br>食べると一時的に金色猫目になる<br><font color=DarkCyan>苦味。有一点点咸味。<br>食用后眼睛会暂时变成金色的猫眼。</font></td>
+				</tr>
+				<tr>
+					<td>306</td>
+					<td><img src="./img/306.webp" width = 100> </td>
+					<td>北のルージュベリー<br><font color=DarkCyan>北之口红莓</font></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>苦い</td>
+					<td>甘味</td>
+					<td>苦い。たまに甘いものもあるらしい<br>食べると一時的に唇が青くなる。北の国でのみ産出される<br><font color=DarkCyan>苦味。似乎偶尔也会有甜味的。<br>使用后嘴唇会暂时变成蓝色。只在北国出产。</font></td>
+				</tr>
+				<tr>
+					<td>307</td>
+					<td><img src="./img/307.webp" width = 100> </td>
+					<td>未熟な群青レモン<br><font color=DarkCyan>未成熟的群青柠檬</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>苦い</td>
+					<td>酸味</td>
+					<td>苦い。少し酸っぱい<br>エメラルド色のレモンのような実<br><font color=DarkCyan>苦味。有一点酸。<br>绿宝石色的柠檬一样的果实。</font></td>
+				</tr>
+				<tr>
+					<td>308</td>
+					<td><img src="./img/308.webp" width = 100> </td>
+					<td>東の二股ニンジン<br><font color=DarkCyan>东之分岔胡萝卜</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>苦い</td>
+					<td>酸味</td>
+					<td>苦い。少し酸っぱい<br>必ず先が二股に分かれているニンジン。東の国でのみ産出される<br><font color=DarkCyan>苦味。有一点酸。<br>尖端必定会分为两岔的胡萝卜。只在东国出产。</font></td>
+				</tr>
+				<tr>
+					<td>309</td>
+					<td><img src="./img/309.webp" width = 100> </td>
+					<td>沈没藻<br><font color=DarkCyan>沉没藻</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>苦い</td>
+					<td>塩味</td>
+					<td>苦い。少ししょっぱい<br>船に絡みついて沈没させる藻。お湯に浸けると昆布っぽい出汁が取れると前賢者様の談<br><font color=DarkCyan>苦味。有一点咸。<br>缠在船上、令船沉没的藻类。据前任贤者所说，在开水中浸泡后能得到类似海带风味的高汤。</font></td>
+				</tr>
+				<tr>
+					<td>310</td>
+					<td><img src="./img/310.webp" width = 100> </td>
+					<td>マンドラゴラの根<br><font color=DarkCyan>曼陀罗根</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>苦い</td>
+					<td></td>
+					<td>とても苦い<br>マンドラゴラの根。漢方薬の材料としても重宝される<br><font color=DarkCyan>非常苦。<br>曼陀罗的根。作为中药材也很有用。</font></td>
+				</tr>
+				<tr>
+					<td>401</td>
+					<td><img src="./img/401.webp" width = 100> </td>
+					<td>青のガロン瓜<br><font color=DarkCyan>蓝加仑瓜</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>酸っぱい</td>
+					<td>香り</td>
+					<td>酸味が強く、香りもいい<br>ひょうたん型で中に酒が入って成っている瓜<br><font color=DarkCyan>酸味很重，香气宜人。<br>葫芦形状、内部装着酒的瓜。</font></td>
+				</tr>
+				<tr>
+					<td>402</td>
+					<td><img src="./img/402.webp" width = 100> </td>
+					<td>完熟グランデトマト<br><font color=DarkCyan>熟透的巨番茄</font></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>酸っぱい</td>
+					<td>旨味</td>
+					<td>酸っぱくて旨い<br>かぼちゃサイズのトマト<br><font color=DarkCyan>又酸又鲜。<br>像南瓜一样大的番茄。</font></td>
+				</tr>
+				<tr>
+					<td>403</td>
+					<td><img src="./img/403.webp" width = 100> </td>
+					<td>しっとり銀河麦<br><font color=DarkCyan>绵软银河麦</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>酸っぱい</td>
+					<td>苦味</td>
+					<td>粉のまま食べると酸っぱくて苦い<br>穂が光るので夜の麦畑が銀河のようになる、銀色混じりの粉。お菓子に最適<br><font color=DarkCyan>直接食用面粉又酸又苦。<br>由于麦穗会发光，夜间的麦田就像银河一样。面粉中掺着银色。最适合做点心。</font></td>
+				</tr>
+				<tr>
+					<td>404</td>
+					<td><img src="./img/404.webp" width = 100> </td>
+					<td>月光樹の実<br><font color=DarkCyan>月光树果实</font></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>酸っぱい</td>
+					<td>甘味<br>塩味</td>
+					<td>酸味が強いが甘さもある。ほんのりとしょっぱさもある<br>桃に似た味の丸い実、夜は白く光る。食べると体が淡く発光する<br><font color=DarkCyan>酸味很重，不过也带有甜味。还有一点点咸。<br>圆形的果实味道与桃子相似，夜里会发出白光。食用后身体会淡淡发光。</font></td>
+				</tr>
+				<tr>
+					<td>405</td>
+					<td><img src="./img/405.webp" width = 100> </td>
+					<td>西のルージュベリー<br><font color=DarkCyan>西之口红莓</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>酸っぱい</td>
+					<td>苦味</td>
+					<td>酸っぱい。たまに苦いものもあるらしい<br>食べると一時的に唇が赤くなる。西の国でのみ産出される<br><font color=DarkCyan>酸味。似乎偶尔也会有苦味的。<br>使用后嘴唇会暂时变成红色。只在西国出产。</font></td>
+				</tr>
+				<tr>
+					<td>406</td>
+					<td><img src="./img/406.webp" width = 100> </td>
+					<td>エバーチーズ<br><font color=DarkCyan>永久奶酪</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>酸っぱい</td>
+					<td>旨味</td>
+					<td>酸っぱいが旨味がある<br>エバーミルクで作ったチーズ<br><font color=DarkCyan>酸味，同时也有鲜味。<br>用永久牛奶制作成的奶酪。</font></td>
+				</tr>
+				<tr>
+					<td>407</td>
+					<td><img src="./img/407.webp" width = 100> </td>
+					<td>ビネガーフィッシュ<br><font color=DarkCyan>醋鱼</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>酸っぱい</td>
+					<td>塩味</td>
+					<td>酸っぱい。そしてしょっぱい<br>川魚、何も味付けしなくとも酢の味がする不思議な魚<br><font color=DarkCyan>酸味。还有咸味。<br>河鱼，即使不加调味料也有醋味的神奇鱼类。</font></td>
+				</tr>
+				<tr>
+					<td>408</td>
+					<td><img src="./img/408.webp" width = 100> </td>
+					<td>熟した群青レモン<br><font color=DarkCyan>成熟的群青柠檬</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>酸っぱい</td>
+					<td>甘味</td>
+					<td>酸っぱい。少し甘い<br>青い色のレモンのような実<br><font color=DarkCyan>酸味。有一点甜。<br>蓝色的柠檬一样的果实。</font></td>
+				</tr>
+				<tr>
+					<td>409</td>
+					<td><img src="./img/409.webp" width = 100> </td>
+					<td>ぬめりタコ<br><font color=DarkCyan>黏滑章鱼</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>酸っぱい</td>
+					<td>苦味</td>
+					<td>酸っぱい。吸盤は少し苦い<br>ぬめぬめと光り輝くタコ。西の魔法使いに凧揚げの「凧」と勘違いされている<br><font color=DarkCyan>酸味。吸盘有一点苦。<br>滑溜溜的亮晶晶的章鱼。由于读音相同，西国的魔法使把它和放风筝的“风筝”弄混了。</font></td>
+				</tr>
+				<tr>
+					<td>410</td>
+					<td><img src="./img/410.webp" width = 100> </td>
+					<td>虹色キノコ<br><font color=DarkCyan>虹色蘑菇</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>酸っぱい</td>
+					<td></td>
+					<td>とても酸っぱい<br>火で炙ることにより様々な色に変化する不思議なキノコ<br><font color=DarkCyan>非常酸。<br>用火烘烤时颜色会千变万化的神奇蘑菇。</font></td>
+				</tr>
+				<tr>
+					<td>501</td>
+					<td><img src="./img/501.webp" width = 100> </td>
+					<td>星屑糖<br><font color=DarkCyan>群星糖</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>旨い</td>
+					<td>甘味</td>
+					<td>料理に旨味を与える。ほんのりと甘い<br>キラキラ光る砂糖。口の中でパチパチする<br><font color=DarkCyan>能给菜品提升鲜味。有一点点甜味。<br>闪闪发亮的糖。在口中会噼啪绽开。</font></td>
+				</tr>
+				<tr>
+					<td>502</td>
+					<td><img src="./img/502.webp" width = 100> </td>
+					<td>白のガロン瓜<br><font color=DarkCyan>白加仑瓜</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>旨い</td>
+					<td>香り</td>
+					<td>旨味が強く、香りもいい<br>ひょうたん型で中に酒が入って成っている瓜<br><font color=DarkCyan>鲜味很浓，香气宜人。<br>葫芦形状、内部装着酒的瓜。</font></td>
+				</tr>
+				<tr>
+					<td>503</td>
+					<td><img src="./img/503.webp" width = 100> </td>
+					<td>メスの宇宙鶏<br><font color=DarkCyan>雌宇宙鸡</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>旨い</td>
+					<td>塩味</td>
+					<td>旨い。少ししょっぱい<br>驚いた顔の鳥。メス<br><font color=DarkCyan>鲜味。有一点咸味。<br>一脸震惊的鸡。雌性。</font></td>
+				</tr>
+				<tr>
+					<td>504</td>
+					<td><img src="./img/504.webp" width = 100> </td>
+					<td>スタ米<br><font color=DarkCyan>星星米<br>（*同音スタマイ（Stand My Heroes，募恋英雄），coly旗下的另一款游戏）</font></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>旨い</td>
+					<td>酸味</td>
+					<td>旨味のある米。酸っぱい味がしなくもない<br>かなり米<br><font color=DarkCyan>有鲜味的米。也并不是毫无酸味。<br>相当像米。</font></td>
+				</tr>
+				<tr>
+					<td>505</td>
+					<td><img src="./img/505.webp" width = 100> </td>
+					<td>マトリ茸<br><font color=DarkCyan>缉毒菇<br>（*マトリ取自《ドラッグ王子とマトリ姫》，coly旗下的另一款游戏）</font></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>旨い</td>
+					<td>苦味</td>
+					<td>旨味もあれば苦味もある<br>幻覚を見るor解毒剤<br><font color=DarkCyan>鲜味和苦味兼具。<br>能够令人看到幻觉，也能解毒。</font></td>
+				</tr>
+				<tr>
+					<td>506</td>
+					<td><img src="./img/506.webp" width = 100> </td>
+					<td>メスのオアシスピッグ<br><font color=DarkCyan>雌绿洲猪</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>旨い</td>
+					<td>酸味</td>
+					<td>旨い。ほんの少し酸っぱい<br>水のある所に住む半水棲の豚<br><font color=DarkCyan>鲜味。有一点点酸。<br>在有水域的地带居住的半水栖猪。</font></td>
+				</tr>
+				<tr>
+					<td>507</td>
+					<td><img src="./img/507.webp" width = 100> </td>
+					<td>笑いニンニク<br><font color=DarkCyan>笑蒜</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>★</td>
+					<td>旨い</td>
+					<td>苦味<br>塩味</td>
+					<td>料理に旨味を与える。生で食べると苦く、少ししょっぱい<br>引き抜くと笑い声のような音を出すニンニクのような野菜<br><font color=DarkCyan>能给菜品提升鲜味。生吃是苦味，微咸。<br>长得像大蒜的蔬菜，拔出时会发出类似笑声的声音。</font></td>
+				</tr>
+				<tr>
+					<td>508</td>
+					<td><img src="./img/508.webp" width = 100> </td>
+					<td>レインディア―<br><font color=DarkCyan>雨鹿<br>（*同音reindeer（驯鹿））</font></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>旨い</td>
+					<td>甘味</td>
+					<td>旨味が強い。調理方法によっては甘さが引き立つ<br>雨を呼び寄せるとされる鹿の一種<br><font color=DarkCyan>鲜味很浓。视烹饪方法，有时也会有甜味。<br>一种据说能够带来降雨的鹿。</font></td>
+				</tr>
+				<tr>
+					<td>509</td>
+					<td><img src="./img/509.webp" width = 100> </td>
+					<td>グローリーロブスター<br><font color=DarkCyan>荣光龙虾</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>旨い</td>
+					<td>酸味</td>
+					<td>旨い。少し酸っぱい<br>栄光の街の川でとれたロブスター。音楽を聞かせると踊り出すらしい。<br><font color=DarkCyan>鲜味。有一点酸。<br>从荣光街的河中捕捞的龙虾。似乎听到音乐时就会跳舞。</font></td>
+				</tr>
+				<tr>
+					<td>510</td>
+					<td><img src="./img/510.webp" width = 100> </td>
+					<td>コカトリスの卵<br><font color=DarkCyan>鸡蛇蛋</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>旨い</td>
+					<td></td>
+					<td>とても旨味がある<br>コカトリスの卵。珍味として有名<br><font color=DarkCyan>非常鲜。<br>鸡蛇的蛋。是有名的珍馐。</font></td>
+				</tr>
+				<tr>
+					<td>601</td>
+					<td><img src="./img/601.webp" width = 100> </td>
+					<td>サンダースパイス<br><font color=DarkCyan>雷电香料</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>からい</td>
+					<td>旨味<br>酸味</td>
+					<td>からい。他の食材の旨味を引き出す。<br>少し酸味も感じられる香辛料。食べると口の中がビリビリする<br><font color=DarkCyan>辣味。能带出其他食材的鲜味。<br>也有些许酸味的香辛料。食用后口中会阵阵刺痛。</font></td>
+				</tr>
+				<tr>
+					<td>602</td>
+					<td><img src="./img/602.webp" width = 100> </td>
+					<td>エアの葉<br><font color=DarkCyan>空气叶<br>（*エア取自《オンエア！》，coly旗下的另一款游戏）</font></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>香り</td>
+					<td>苦味</td>
+					<td>香りがいい。葉っぱのまま食べると苦い<br>茶葉。飲むといい声になる。あったかいのは温エア茶<br><font color=DarkCyan>香气宜人。直接吃叶子是苦味的。<br>茶叶。喝下后声音会变得好听。加热后得到温空气茶。<br>（*温エア茶谐音オンエア）</font></td>
+				</tr>
+				<tr>
+					<td>603</td>
+					<td><img src="./img/603.webp" width = 100> </td>
+					<td>スノーシナモン<br><font color=DarkCyan>雪肉桂</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td>香り</td>
+					<td>甘味<br>塩味</td>
+					<td>香りがいい。ちょっとだけ食べるとちょうどいい甘さとしょっぱさが味わえる<br>雪と見分けがつかないほど真っ白なシナモン<br><font color=DarkCyan>香气宜人。食用少许可以品尝到恰到好处的甜味和咸味。<br>几乎会和雪混淆的纯白肉桂。</font></td>
+				</tr>
+				<tr>
+					<td>714</td>
+					<td><img src="./img/714.webp" width = 100> </td>
+					<td>名無しの魚<br><font color=DarkCyan>无名之鱼<br>（*neta自《&0》，coly旗下的另一款游戏）</font></td>
+					<td></td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>★</td>
+					<td>旨い</td>
+					<td>塩味</td>
+					<td>旨い。少ししょっぱい。<br>己の名前を探し求め、泳ぎ続ける魚。名前をくれた相手には、一生もののレシピをくれるらしい。<br><font color=DarkCyan>鲜味。有一点咸。<br>寻觅着自己的名字，不断游动的鱼。似乎如果有人为它赋予了名字，它就会赠予一份能使用终生的食谱。<br>（*&0宣传语：一生ものの恋をする（开展一场持续终生的恋情）；主人公因事故失忆）</font></td>
+				</tr>
+				<tr>
+					<td>604</td>
+					<td><img src="./img/604.webp" width = 100> </td>
+					<td>七色メレンゲ<br><font color=DarkCyan>七色蛋白酥</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『夢幻の城のコンフィズリー』限定材料。決まった味はないらしい<br>七色いずれかの色に変化するメレンゲ。作った人によって色が変わる<br><font color=DarkCyan>颜色会变成七色中的一种的蛋白酥。会随制作者而变化颜色。</font></td>
+				</tr>
+				<tr>
+					<td>610</td>
+					<td><img src="./img/610.webp" width = 100> </td>
+					<td>木になる山羊<br><font color=DarkCyan>树化山羊</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『泡沫の夜の魔法にかけられて』限定材料。決まった味はないらしい<br>木ノ実のように、木に生える山羊<br><font color=DarkCyan>像树木的果实一样长在树上的山羊。</font></td>
+				</tr>
+				<tr>
+					<td>613</td>
+					<td><img src="./img/613.webp" width = 100> </td>
+					<td>おしゃべりなローズ<br><font color=DarkCyan>健谈玫瑰</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『花咲く森に真実の愛を』限定材料。決まった味はないらしい<br>口にすると愛を伝えずにいられなくなる<br><font color=DarkCyan>食用后会忍不住表达爱意。</font></td>
+				</tr>
+				<tr>
+					<td>615</td>
+					<td><img src="./img/615.webp" width = 100> </td>
+					<td>ぷるぷるゼラチン<br><font color=DarkCyan>颤抖明胶</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『星降る空のメモワール』限定材料。決まった味はないらしい<br>常にぷるぷるしている。止まるのは100年に1度<br><font color=DarkCyan>总是在瑟瑟发抖。一百年才会停下来一次。</font></td>
+				</tr>
+				<tr>
+					<td>617</td>
+					<td><img src="./img/617.webp" width = 100> </td>
+					<td>永久氷<br><font color=DarkCyan>永久冰</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『サマーバカンスの贈り物』限定材料。決まった味はないらしい<br>どんな暑い場所でも絶対に溶けないとされる氷<br><font color=DarkCyan>据说无论在多热的地方都不会融化的冰。</font></td>
+				</tr>
+				<tr>
+					<td>619</td>
+					<td><img src="./img/619.webp" width = 100> </td>
+					<td>ドリアングレイの葉<br><font color=DarkCyan>道连格雷之叶</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『思い出香るティーパーティ』限定材料。決まった味はないらしい<br>この茶葉でいれた紅茶を飲むたびに鏡にうつる自分の姿が若くなる。0歳の姿を見ると…<br><font color=DarkCyan>每当喝下这种茶叶泡出的红茶，镜中自己的倒影就会变年轻。要是看到了0岁的样子……</font></td>
+				</tr>
+				<tr>
+					<td>622</td>
+					<td><img src="./img/622.webp" width = 100> </td>
+					<td>セルフカボチャ<br><font color=DarkCyan>自助南瓜</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『黒猫と魔法使いのワルツ』限定材料。決まった味はないらしい<br>自分でお湯の中に入って自ら味付けをし、オーブンの中へ。料理人泣かせのカボチャ<br><font color=DarkCyan>自己进入开水中、自己给自己调味、自己进入烤箱。令厨师为难的南瓜。</font></td>
+				</tr>
+				<tr>
+					<td>625</td>
+					<td><img src="./img/625.webp" width = 100> </td>
+					<td>空飛ぶフェーブ<br><font color=DarkCyan>翔空瓷像<br>（*fève，这里指放在国王饼中当做幸运物的小型陶艺装饰，类似饺子里包硬币(?))</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『1st Anniversary きみに花を、空に魔法を』限定材料。決まった味はないらしい<br>可愛らしい小さな陶器。眺めていると空も飛べそうなほどハッピーな気持ちになる<br><font color=DarkCyan>可爱的小型瓷像。看着它就会感到仿佛能在空中飞翔一般的快乐。</font></td>
+				</tr>
+				<tr>
+					<td>628</td>
+					<td><img src="./img/628.webp" width = 100> </td>
+					<td>冬景色のジンジャー<br><font color=DarkCyan>冬景姜</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『雪降る街のプレゼント』限定材料。決まった味はないらしい<br>12月にしか採れないとされる希少なジンジャー<br><font color=DarkCyan>据说只能在12月采摘到的稀有的姜。</font></td>
+				</tr>
+				<tr>
+					<td>632</td>
+					<td><img src="./img/632.webp" width = 100> </td>
+					<td>ハートカカオ<br><font color=DarkCyan>心形可可果</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『ショコラと魔法の青い鳥』限定材料。決まった味はないらしい<br>ハート型の形をしたカカオ。このカカオでチョコを作ると恋が実ると言われる<br><font color=DarkCyan>心形的可可果。据说用这种可可果做出巧克力，恋情就能实现。</font></td>
+				</tr>
+				<tr>
+					<td>635</td>
+					<td><img src="./img/635.webp" width = 100> </td>
+					<td>ハニーポットフラワー<br><font color=DarkCyan>蜜罐花</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『再会と軌跡のバンケット』限定材料。決まった味はないらしい<br>中に注いだものを極上の蜜の味にしてくれる花。カップケーキの器としてよく使われる<br><font color=DarkCyan>能为注入其中的东西赋予最上等的蜂蜜味道的花。常常被用作纸杯蛋糕的容器。</font></td>
+				</tr>
+				<tr>
+					<td>638</td>
+					<td><img src="./img/638.webp" width = 100> </td>
+					<td>桜<br><font color=DarkCyan>樱</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『パラドックス・ロイド』限定材料。決まった味はないらしい<br>見ていると、たくさんの出会いや別れを思い出す花。優しいピンク色が美しい<br><font color=DarkCyan>每当看到，就会回忆起许多相遇与别离的花。柔和的粉色十分美丽。</font></td>
+				</tr>
+				<tr>
+					<td>639</td>
+					<td><img src="./img/639.webp" width = 100> </td>
+					<td>気まぐれハーブ<br><font color=DarkCyan>随性药草</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『天空の宴に春を招いて』限定材料。決まった味はないらしい<br>ランダムに5色生えるハーブ。色によって、幸せになったり自分を誇りに思ったりする<br><font color=DarkCyan>随机长出五种颜色的药草。不同颜色有着不同效果，例如让人感到幸福，或是让人感到自豪等等。</font></td>
+				</tr>
+				<tr>
+					<td>645</td>
+					<td><img src="./img/645.webp" width = 100> </td>
+					<td>鈴なりシュー<br><font color=DarkCyan>泡芙串</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『ローレライの涙は湖に溶けて』限定材料。決まった味はないらしい<br>芽キャベツのように畑で採れるシュー<br><font color=DarkCyan>像抱子甘蓝一样在田地里采摘的泡芙。</font></td>
+				</tr>
+				<tr>
+					<td>647</td>
+					<td><img src="./img/647.webp" width = 100> </td>
+					<td>スターリーシロップ<br><font color=DarkCyan>星辉糖浆</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『零れた夢のステラート』限定材料。決まった味はないらしい<br>美しい紺碧のシロップ。浮かぶ泡がキラキラと星のような輝きを放っている<br><font color=DarkCyan>美丽的湛蓝色糖浆。浮在其中的气泡像星星一样闪闪发光。</font></td>
+				</tr>
+				<tr>
+					<td>650</td>
+					<td><img src="./img/650.webp" width = 100> </td>
+					<td>暑がりコーン<br><font color=DarkCyan>怕热玉米</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『彷徨う夜に導きをかざして』限定材料。決まった味はないらしい。<br>収穫した途端皮を自分で脱ぎ始めるトウモロコシ<br><font color=DarkCyan>刚一摘下来就开始自己脱去外皮的玉米。</font></td>
+				</tr>
+				<tr>
+					<td>653</td>
+					<td><img src="./img/653.webp" width = 100> </td>
+					<td>マーメイドアップル<br><font color=DarkCyan>人鱼苹果</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『新月の下でとびきりの悪戯を』限定材料。決まった味はないらしい。<br>水棲のりんご。水中で素早く動き回るので、ダックアップルの難易度を爆上げする<br><font color=DarkCyan>水栖的苹果。由于在水中的行动非常敏捷，导致叼苹果游戏的难度暴涨。</font></td>
+				</tr>
+				<tr>
+					<td>656</td>
+					<td><img src="./img/656.webp" width = 100> </td>
+					<td>七面鳥<br><font color=DarkCyan>火鸡（七面鸟）</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『2nd Anniversary　繋いだ絆は魔法のように』限定材料。決まった味はないらしい<br>七つの人格を持つ鳥。もっとも凶暴な人格はドラゴンにも怯まない<br><font color=DarkCyan>有七种人格的鸟。最凶暴的人格连龙也不畏惧。</font></td>
+				</tr>
+				<tr>
+					<td>659</td>
+					<td><img src="./img/659.webp" width = 100> </td>
+					<td>ホワイトシュガー<br><font color=DarkCyan>白色砂糖</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント「輝く空のペールノエル」限定材料。決まった味はないらしい。<br>粉雪のように降る白い砂糖。冬の前に降ることもあり、人々を慌てさせる<br><font color=DarkCyan>像细雪一样降落的白色砂糖。有时入冬前就会降落，导致人们惊慌不已。</font></td>
+				</tr>
+				<tr>
+					<td>663</td>
+					<td><img src="./img/663.webp" width = 100> </td>
+					<td>雪解けチョコチップ<br><font color=DarkCyan>融雪巧克力片</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『ショコラの女王は誰の手に』限定材料。決まった味はないらしい<br>雪が解けるように儚くとろけるチョコチップ。保存方法には気をつけて<br><font color=DarkCyan>像融雪一样缥缈融化的巧克力片。需要注意保存方法。</font></td>
+				</tr>
+				<tr>
+					<td>666</td>
+					<td><img src="./img/666.webp" width = 100> </td>
+					<td>カラメルの木<br><font color=DarkCyan>焦糖树</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『硝子の塔と祝福のレガーロ』限定材料。決まった味はないらしい<br>樹液がカラメル味の不思議な木。カブトムシにも人間にも大人気<br><font color=DarkCyan>树叶有焦糖味道的神奇树木。独角仙和人类都很喜欢。</font></td>
+				</tr>
+				<tr>
+					<td>669</td>
+					<td><img src="./img/669.webp" width = 100> </td>
+					<td>サーティーエッグズ<br><font color=DarkCyan>三十蛋</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『泣き虫うさぎと帽子のフロル』限定材料。決まった味はないらしい<br>必ず30個同時に生まれる卵。大所帯を支える魔法舎のキッチン御用達<br><font color=DarkCyan>每次一定会同时生出30个的蛋。是要为大量人员提供用餐的魔法舍厨房的指定供应品。</font></td>
+				</tr>
+				<tr>
+					<td>675</td>
+					<td><img src="./img/675.webp" width = 100> </td>
+					<td>ぶるぶるローズ<br><font color=DarkCyan>颤抖玫瑰</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『花雨をシェリーと見上げて』限定材料。決まった味はないらしい<br>大量に食べると震えが止まらなくなる。誰かに抱きしめてもらえば震えは止まる<br><font color=DarkCyan>大量食用后会颤抖不止。被人拥抱后颤抖会停下来。</font></td>
+				</tr>
+				<tr>
+					<td>677</td>
+					<td><img src="./img/677.webp" width = 100> </td>
+					<td>七蜜<br><font color=DarkCyan>七蜜</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『熱砂のオアシスに勇者の歌を』限定材料。決まった味はないらしい<br>レインボービーが七種の花から集めた虹色の蜂蜜。ごく稀に八種の花から集めたものもある。<br><font color=DarkCyan>虹蜂从七种花中采蜜得到的虹色蜂蜜。极少见的情况下也有用八种花制成的。</font></td>
+				</tr>
+				<tr>
+					<td>680</td>
+					<td><img src="./img/680.webp" width = 100> </td>
+					<td>バニラの穂<br><font color=DarkCyan>香草穗</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『未完のワインに思いを馳せて』限定材料。決まった味はないらしい<br>甘い香りがたっぷり実った穂。熟しきると種が突然弾け飛ぶのでご注意を。<br><font color=DarkCyan>满盈着甘甜香味的果穗。成熟后种子会忽然迸开，需要注意。</font></td>
+				</tr>
+				<tr>
+					<td>685</td>
+					<td><img src="./img/685.webp" width = 100> </td>
+					<td>海溝のセバスティクス<br><font color=DarkCyan>海沟鲉<br>（*Sebastiscus，鲉鱼的学名）</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『3rd Anniversary　どうかあなたに、虹の物語を』限定材料。決まった味はないらしい。<br>赤い色が鮮やかなカサゴ。普段は海溝に生息し滅多に釣れないが、誰かを祝いたいという真心を感じると自ら釣られにやって来る。<br><font color=DarkCyan>有着鲜艳红色的鲉鱼。一般在海沟栖息，很少钓得到，不过当它感受到有人想为他人祝福的真心时，便会自己来上钩。</font></td>
+				</tr>
+				<tr>
+					<td>689</td>
+					<td><img src="./img/689.webp" width = 100> </td>
+					<td>破魔グリ<br><font color=DarkCyan>驱邪蛤蜊<br>（*同音ハマグリ（蛤蜊））</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>『2023 New Yearキャンペーン』限定材料。決まった味はないらしい<br>破魔の力が宿るとされる貝。たとえ北の魔法使いに遭遇しても、この貝を破ッ！とすれば助かる……かもしれない。<br><font color=DarkCyan>据说有着驱邪力量的贝类。即使遭逢北国魔法使，只要气势十足地出示这贝壳就能得救……也说不定。</font></td>
+				</tr>
+				<tr>
+					<td>692</td>
+					<td><img src="./img/692.webp" width = 100> </td>
+					<td>カメレオンカカオ<br><font color=DarkCyan>变色可可果</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント「痺れる愛をドルチェに託して」限定材料。決まった味はないらしい<br>無色透明のカカオ。このカカオで作ったチョコは、周りのものに合わせて色を変える芸術家になる。<br><font color=DarkCyan>无色透明的可可果。用这种可可果做的巧克力，能够配合着周围的物品改变颜色，有如艺术家一般。</font></td>
+				</tr>
+				<tr>
+					<td>695</td>
+					<td><img src="./img/695.webp" width = 100> </td>
+					<td>ファッションフルーツ<br><font color=DarkCyan>时尚果</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『青薔薇彩るオスピタリタ』限定材料。決まった味はないらしい<br>美意識が高く美しい形になるように日々努力しているフルーツ。フルーツコレクショントップの座を狙っている<br><font color=DarkCyan>美学意识很强，为了形状更优美而日复一日努力的水果。目标是登上水果时尚展的顶点。</font></td>
+				</tr>
+				<tr>
+					<td>698</td>
+					<td><img src="./img/698.webp" width = 100> </td>
+					<td>パイレーツチェリー<br><font color=DarkCyan>海盗樱桃</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『シー・ローバー・スクアーマ』限定材料。決まった味はないらしい<br>眼帯のような黒い模様を持つチェリー。正式名称はパ…ほにゃららチェリーだが、毎回噛むので賢者様がこっそりこの呼び名を作った。<br><font color=DarkCyan>有着像眼罩一样的黑色花纹的樱桃。正式名称其实是帕…什么什么樱桃，由于每次都会咬到舌头，贤者大人悄悄给它取了这个通称。</font></td>
+				</tr>
+				<tr>
+					<td>704</td>
+					<td><img src="./img/704.webp" width = 100> </td>
+					<td>年輪バター<br><font color=DarkCyan>年轮黄油</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『迷える旅人に門出のボーダを』限定材料。決まった味はないらしい<br>年輪のような形をしたバター。長い年月を共にした味わい深さを出してくれる。<br><font color=DarkCyan>年轮形状的黄油。有着随悠久时间积累的醇厚风味。</font></td>
+				</tr>
+				<tr>
+					<td>706</td>
+					<td><img src="./img/706.webp" width = 100> </td>
+					<td>さらさら水<br><font color=DarkCyan>潺潺水</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『記憶の汀に踊る綺羅星』限定材料。決まった味はないらしい。<br>さらさらと流れる川で汲まれた水。どんなものでも細くさらさらにしてしまう。賢者様の世界のそうめんもどきを作るのに採用された。<br><font color=DarkCyan>从潺潺的河川中汲取的水。能将一切物品变得纤细柔顺。被用来制作贤者大人世界的“挂面”的仿品。</font></td>
+				</tr>
+				<tr>
+					<td>711</td>
+					<td><img src="./img/711.webp" width = 100> </td>
+					<td>魔ロン<br><font color=DarkCyan>魔栗<br>（*同音マロン（marron，栗子））</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『終わらぬ夜へ戯れの愛寵を』限定材料。決まった味はないらしい<br>もう一個食べちゃいなよと甘く誘惑してくる魔の栗。お菓子に入れるとベロベロばあ！とお化けのように脅かしてくる。<br><font color=DarkCyan>会甜美地诱惑人“再吃一个吧！”的魔栗。放在点心中会像妖怪一样扮鬼脸吓唬人。</font></td>
+				</tr>
+				<tr>
+					<td>715</td>
+					<td><img src="./img/715.webp" width = 100> </td>
+					<td>クラッカーバジル<br><font color=DarkCyan>拉炮罗勒</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『きっと、きみと奇跡を』限定材料。決まった味はないらしい。<br>トッピングすると勝手に弾けるバジル。舞い散る様はまるでお祝いの紙吹雪。<br><font color=DarkCyan>洒在菜品上装饰的话会擅自迸开的罗勒。散落的样子就像是庆祝的彩纸屑纷飞。</font></td>
+				</tr>
+				<tr>
+					<td>718</td>
+					<td><img src="./img/718.webp" width = 100> </td>
+					<td>ぱっと見重箱（一の重）<br><font color=DarkCyan>一瞥套盒（第一层）</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>『New Year！ホリデーキャンペーン 2024年』限定材料。決まった味はないらしい。<br>賢者様が物置部屋で見つけたお重っぽいもの。みんなが魔法で綺麗にしてくれたので、あのおめでたい料理に使えそう。<br><font color=DarkCyan>贤者大人在杂物间发现的多层套盒似的东西。众人用魔法把它清理干净，似乎可以用在那道节庆菜品上。</font></td>
+				</tr>
+				<tr>
+					<td>722</td>
+					<td><img src="./img/722.webp" width = 100> </td>
+					<td>キスナッツ<br><font color=DarkCyan>接吻坚果</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『囚われのノーチェに恋して』限定材料。決まった味はないらしい<br>ナッツ同士がキスしているような形の不思議な木の実。食べると老若男女を虜にする口説き文句が次々出てくるようになる。<br><font color=DarkCyan>形状像是两枚坚果接吻一样的神奇果实。食用后可以源源不绝地说出能够虏获一切男女老少芳心的情话。</font></td>
+				</tr>
+				<tr>
+					<td>725</td>
+					<td><img src="./img/725.webp" width = 100> </td>
+					<td>ひねくれマシュマロ<br><font color=DarkCyan>别扭棉花糖</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『涙の果てで紫花の微睡みを』限定材料。決まった味はないらしい。<br>食べるとひねくれたことしか言えなくなるマシュマロ。……別に、料理に使ってほしいわけじゃないから！<br><font color=DarkCyan>食用后只能说出不坦率的话的棉花糖。……才没有想被你用作食材呢！</font></td>
+				</tr>
+				<tr>
+					<td>728</td>
+					<td><img src="./img/728.webp" width = 100> </td>
+					<td>ファミリーハニー<br><font color=DarkCyan>家族蜂蜜</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント「アルテレーゴの掟」限定材料。決まった味はないらしい<br>淡いピンクが美しい貴重な蜂蜜。一族総出で外敵に襲いかかるファミリービーの巣から採取するのは至難の業。<br><font color=DarkCyan>有着美丽浅粉色的贵重蜂蜜。要从全家出动抵御外敌的家族蜂的蜂巢中采集蜂蜜是件极度困难的工作。</font></td>
+				</tr>
+				<tr>
+					<td>734</td>
+					<td><img src="./img/734.webp" width = 100> </td>
+					<td>ドレッシーパウダー<br><font color=DarkCyan>华丽糖粉</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『花の加護と爛漫のノッツェ』限定材料。決まった味はないらしい<br>花嫁のドレスのように眩い光を放つ粉砂糖。調理する人のときめきを感じるとカラフルに色付く。<br><font color=DarkCyan>像是新娘礼裙一样光彩夺目的糖粉。感受到烹饪者心中的雀跃便会染上彩色。</font></td>
+				</tr>
+				<tr>
+					<td>736</td>
+					<td><img src="./img/736.webp" width = 100> </td>
+					<td>ステラブレッド<br><font color=DarkCyan>星星面包</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『星夜のあなたに魔法を教えて』限定材料。決まった味はないらしい。<br>綺麗な星型のパン。満天の星の光にさらしながら熟成した小麦粉が使われており、その輝きは七日間続く。<br><font color=DarkCyan>漂亮的星型面包。使用在满天星光映照下熟成的小麦粉制成，可以持续发光七天。</font></td>
+				</tr>
+				<tr>
+					<td>738</td>
+					<td><img src="./img/738.webp" width = 100> </td>
+					<td>シュリンクシュリンプ<br><font color=DarkCyan>蜷缩虾<br>（*shrink和shrimp押韵）</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『紅蓮の大地で遊ぶ愛し子』限定材料。決まった味はないらしい。<br>常に自信なさげに背を丸めているエビ。笑いニンニクと調理すると背がピンと伸び、滋養強壮効果を持つようになる。<br><font color=DarkCyan>总是没有自信、弓着腰的虾。和笑蒜一起烹饪的话脊背就会伸得笔直，产生滋养强壮的效果。</font></td>
+				</tr>
+				<tr>
+					<td>742</td>
+					<td><img src="./img/742.webp" width = 100> </td>
+					<td>キングアーモンド<br><font color=DarkCyan>国王杏仁</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>イベント『流離の神に捧ぐ祈りは』限定材料。決まった味はないらしい。<br>自分のことを王様だと勘違いしているアーモンド。自分にふさわしくない味だと、勝手に料理から逃げ出してしまう。<br><font color=DarkCyan>误以为自己是国王的杏仁。如果觉得菜的味道配不上自己，就会擅自从中逃走。</font></td>
+				</tr>
+				<tr>
+					<td>745</td>
+					<td><img src="./img/745.webp" width = 100> </td>
+					<td>魔法舎の思い出<br><font color=DarkCyan>魔法舍的回忆</font></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>これまで任務先で出会った様々な食材の詰め合わせ。<br>賢者様のために魔法使いたちが各国から手配した。<br><font color=DarkCyan>至今为止在任务地点遇到的各种各样的食材的集合。<br>是魔法使们为了贤者而从各国筹集的。</font></td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div id="spots">
+			<h2>地点名录</h2>
+			<p class="notes">*长期更新补充<br></p>
+
+			<label for="filterInputText_spots">筛选：</label>
+			<input type="text" id="filterInputText_spots" onkeyup="filterTableByText('spots')" placeholder="输入筛选文本">
+			<br>
+			<table id="spotsTable">
+				<tr class="tableHeader">
+					<td>序号</td>
+					<td>名称</td>
+					<td>出处</td>
+					<td>央</td>
+					<td>北</td>
+					<td>东</td>
+					<td>西</td>
+					<td>南</td>
+					<td>介绍</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>オズの爪痕<br><font color=DarkCyan>奥兹的爪痕</font></td>
+					<td>育成地图</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>広大な大地に、底の見えない巨大な亀裂が刻まれている。オズが切り裂いたと言われる爪痕は、凄まじい魔力を感じさせる。その迫力からかこの地にはとある伝承があり、オズを畏怖した人間たちによって彼に関するモニュメントが築かれた。<br><font color=DarkCyan>在广大的大地上，刻划着一道深不见底的巨大龟裂。这道据说是奥兹撕裂而成的痕迹中，能够感到惊人的魔力。或许是由于它如此惊心动魄，当地流传着某个传说，而畏惧着奥兹的人们在此处建起了与他相关的纪念物。</font></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>グランヴェル城<br><font color=DarkCyan>格兰威尔城</font></td>
+					<td>育成地图</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>古い歴史のある建物であり、かつて戦乱の世は残忍な魔法使いが住み着いていた城だったが、初代国王が奪還したのちにグランヴェル城として再建されたという。祝日には城の一部を解放しているため、一般人も見学できる。帰りには特別なお土産が貰えるらしい。<br><font color=DarkCyan>这是一栋历史悠久的建筑，在战乱时代曾经是残忍的魔法使所居住的城堡，初代国王将它夺回后重建为格兰威尔城。在节日里，城堡的一部分会对外开放，一般民众也可参观。离开时似乎会得到特别的礼物。</font></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>栄光の街<br><font color=DarkCyan>荣光之街</font></td>
+					<td>育成地图</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>美しい大河が流れており、貿易が盛んで、活気溢れる開放的な街。住民もみな友好的な人柄で、昼夜問わず賑わう露店街では食べ歩きを楽しめる。巨大な蛇の怪物の伝説があり、古くから剣士が活躍した街だとも言われている。幼い頃から騎士への憧れを持っていたカインもこの街で剣術を学んだ。<br><font color=DarkCyan>一座有一条美丽的大河流过，贸易繁盛，活力四射的开朗城镇。居民也都亲切友善，市集无论昼夜始终繁华热闹，很适合边逛边品尝美食。当地有着巨大蛇怪的传说，自古就是剑士们大显身手的城镇。自幼憧憬成为骑士的凯因也是在这座城镇上学习的剑术。</font></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>既知の遺跡<br><font color=DarkCyan>已知的遗迹</font></td>
+					<td>育成地图</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>南方の荒野の果てにある二千年以上前の古代都市の遺跡群で、グランヴェル王朝より遥か昔に王朝が築かれた土地とも言われている。その一方で、魔法使いが堕ちる場所という別名もあるらしい。<br><font color=DarkCyan>地处南方的荒野尽头，超过两千年前的古城的遗迹群，据说是远比格兰威尔王朝更古老的王朝所建设。此外，它有一个别称是“魔法使堕落之处”。</font></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>氷の森<br><font color=DarkCyan>冰之森</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>広大な北の大地に広がる白銀の世界。あまりにも厳しい寒さのため人間はほとんどいない。静寂の中に佇む鬱蒼とした木々は樹氷や樹霜を成し、幻想的で美しい光景を見せる。木の幹から採取できる色とりどりの鉛の宝石は森の名産品でもあり、スノウとホワイトがステンドグラス作りに使っている。<br><font color=DarkCyan>在广大的北国大地上铺展开的银白色世界。由于过于严寒，几乎没有人类居住。矗立在寂静中的繁茂森林枝头挂着雾凇，营造出一片梦幻的美景。树干中可以采摘到各色的铅宝石，是这座森林的名产，斯诺和怀特将它用作彩绘玻璃的制作。</font></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>氷の街<br><font color=DarkCyan>冰之街</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>二人が住む場所に庇護を求めた人間や弱い魔法使いが集まり、やがて街になった。そのため、住民は双子を愛し敬い、従順に振る舞う。家々にはステンドグラスの窓が目立つ。マーシアの実は双子が住処を変えるたびにその土地に植えるもので、この街でもよく育っている。<br><font color=DarkCyan>向斯诺与怀特请求庇护的人类和弱小魔法使汇聚起来，最终形成了城镇。因此，居民敬爱着双子，对他们极尽顺从。民居的彩绘玻璃窗十分惹人注目。双子搬家时便会在新的地点栽种玛西亚果，这座镇子上的也长得很茂盛。</font></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>死の湖<br><font color=DarkCyan>死之湖</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>優れた水源である一方気候も厳しく、周辺に集落が形成されては滅びている。この湖の中央にある島は、ミスラが渡し守として死人を運び込んでいたため湖畔の村人たちから「死者の国」と呼ばれていた。ミスラはその島で凍えた骨とともに暮らしていたらしい。<br><font color=DarkCyan>尽管是优质的水源，但气候也十分恶劣，周围的集落时而形成时而消亡。湖中央有一座岛，密斯拉作为摆渡人将死者运往岛上，因此岛被湖畔的村民称为“死者之国”。密斯拉似乎和那些冰冻的尸骨一同生活在岛上。</font></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>夢の森<br><font color=DarkCyan>梦之森</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>童話の世界のように不可思議で可愛らしい場所だが、魔力が混ざった森の木々は致死の毒を放出する。体を蝕む毒は極めて快楽的な夢を見せるため、死期の近い者たちが最期の幸せに浸ろうと訪れる。オーエン曰く「居心地がいい」らしく、生死の境を彷徨う人々を邪魔するためによく遊びに行っている。<br><font color=DarkCyan>是个像童话世界一般的既神奇又可爱的地方，但森林中的树木带着魔力，会释放出致命的毒素。侵蚀身体的毒素能让人看到极其愉悦的梦境，因此濒死的人们会为了体会最后的幸福而来到这里。据欧文所说那“十分舒畅”。他经常会来这里，以打扰那些徘徊在生死边缘的人为乐。</font></td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>時の洞窟<br><font color=DarkCyan>时之洞窟</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>北の国でも全く人間が寄り付かない場所で、時を超えて見知らぬ時代に連れさらわれてしまうという噂がある。ブラッドリーのマナエリアに似ており、この地の近くに盗賊団のアジトを構えて手下たちと暮らしていた。便利な場所であったがとある理由から洞窟をアジトにはしていなかった。<br><font color=DarkCyan>即使在北国也属于格外人迹罕至的地方，传闻会跨越时空将人带往未知的时代。由于与布拉德利的玛那场域相似，他在附近设立了强盗团的基地，与部下一同生活在那里。虽然洞窟是个方便的地方，但出于某个原因，他没有将基地设置在这里。</font></td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>嵐の谷<br><font color=DarkCyan>岚之谷</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>一度足を踏み入れると出てこられないと噂され、「迷いの谷」という別名がある。谷に住まう精霊たちの強い魔力がみなぎっているため、不可思議で神秘的な現象が起こりやすい。隠者たちの隠れ谷とも呼ばれ、ここでひっそりと暮らしている魔法使いもいるらしい。<br><font color=DarkCyan>传说一旦踏入此处就再也出不来，有着“迷失之谷”的别称。谷中满溢着居住在此处的精灵们的强大魔力，因此很容易发生不可思议的神秘现象。这里也被称为隐士的隐居之谷，似乎也有魔法使悄悄地生活在这里。</font></td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>シャーウッドの森<br><font color=DarkCyan>雪伍德森林</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>ブランシェット領内にある。森の奥にはお尋ね者や伏兵が潜んでいることもあるため、領主は森番に管理を頼んでいる。広大かつ狼やクマが現れると言われており、案内人なしで通り抜けるのは困難。シノとヒースクリフが修行を重ねたのもこの森で、二人の痕跡が残っている場所もある。<br><font color=DarkCyan>位于布兰榭特领地内。由于森林深处可能潜伏着通缉犯和伏兵，领主将它交给守林人进行管理。森林面积辽阔，据说会有狼和熊出没，如果没有向导很难穿过。这里也是西诺和希斯克利夫练习魔法的地点，林中有些地方还留有二人的痕迹。</font></td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>ブランシェット城<br><font color=DarkCyan>布兰榭特城</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>歴史が古く、築城自体は中央の国のグランヴェル城よりも前である。周囲の渓谷や森が自然の要塞となっている。城内ではからくり仕掛けの時計や噴水など、精密作業が得意な東の国の職人たちの作品も多く見られる。シノを初め、外で働く使用人は基本的に城の中には入れない決まりになっている。<br><font color=DarkCyan>这座城历史悠久，城堡本身的建造时间比中央之国的格兰威尔城还要早。周围的溪谷和森林形成了自然的要塞。城中有很多擅长精密操作的东之国匠人制作的作品，像是机械时钟和喷泉等等。包括西诺在内，在城外工作的佣人基本上是不允许进入城内的。</font></td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>雨の街<br><font color=DarkCyan>雨之街</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>東の国の首都であり、法典を厳格に守るという風潮が強い。暮らしている人々は余計なトラブルを避け、必要以上に他人に干渉しない。そのため街中は非常に静かだが、本当は親切で真面目な人が多く、ネロの店をはじめとした会話が許可されている店の中ではその時限りの会話を楽しんでいる。<br><font color=DarkCyan>东之国的首都，有着很强的严守法典的倾向。生活在这里的人们规避着不必要的麻烦，如非必要不会与他人接触。因此城中异常安静，不过其实和善认真的人很多，包括尼禄的店在内，在那些允许交谈的店铺中，人们会享受仅此一刻的交谈。</font></td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>ベネットの酒場<br><font color=DarkCyan>贝内特酒吧</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>西の国の高級リゾート地・神酒の歓楽街で古くから営業を続けている。西の国のみならず各国の魔法使いが集まる社交場として愛され、スノウとホワイトやフィガロ、レノックス、ミスラ、大魔女チレッタなど、魔法舎ゆかりの魔法使いたちも訪れたことがある。ムルは昔からの常連。<br><font color=DarkCyan>这座酒吧坐落在西之国的高级度假胜地“神酒娱乐区”，有着悠久的经营历史。不仅限于西之国，在各国的魔法使之中都是很受欢迎的集会社交场所。与魔法舍相关的人士，像是斯诺与怀特、费加罗、雷诺克斯、密斯拉、大魔女蒂莱塔都曾经造访过这里。穆尔从过去就一直是常客。</font></td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>未開の天文台<br><font color=DarkCyan>荒僻的天文台</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>学者時代の西の魔法使い・ムルが＜大いなる厄災＞を見るために作り、研究に明け暮れながら入り浸っていたという天文台。<br>施設内は様々な学術書や数式が書かれた紙が散らばっている。街から離れた断崖の拓けた土地に建っているため、人工的な灯りはほとんど届かない。建設当初からある大きな望遠鏡からは満天の星空を堪能できる。<br><font color=DarkCyan>这座天文台是学者时期的西国魔法使穆尔为了观测“大灾厄”而建造，他曾为了研究而终日沉浸其中。<br>建筑内散落着各式学术书籍和写着公式的纸。由于是在远离城镇的断崖开拓而成的土地上建造，基本不受人造光源的干扰。借助自建成以来一直存在的大型望远镜，可以欣赏繁星满天的景色。</font></td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>泡の街<br><font color=DarkCyan>泡之街</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>治安はあまり良いとは言えず、夜に一人で出歩くのは危険とされている貧民街。ここで暮らす子供達は賢く、用心深い。大人を信用しておらず、油断していると硬貨を騙し取られることもある。クロエにとってあまり良い思い出のない場所のようだが、ラスティカとの出会いの地でもある。<br><font color=DarkCyan>治安着实不佳，夜晚独自出行也会有危险的贫民窟。在这里生活的孩子们聪慧狡黠又谨慎。他们不信任大人，若是不当心，就会被他们骗走硬币。对库洛艾来说，这里几乎没有什么美好的回忆，但也是与拉斯提卡相遇的地点。</font></td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>豊かの街<br><font color=DarkCyan>丰饶之街</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>ラスティカが旅の間によく立ち寄っていた街で、クロエも何度か訪れたことがあるらしい。住民には王族や貴族が多く貴族文化が発達しており、西の国の文化の発信地である。豊穣の広場にある女神像には、『女神像の足に触れて、願い事を思い浮かべると叶う』という伝説がある。<br><font color=DarkCyan>这里是拉斯提卡旅行期间经常停驻的城镇，克洛艾也曾多次造访。居民中王族和贵族很多，贵族文化盛行，是西之国的文化发祥地。丰饶广场上有座女神像，传说“一边触碰女神像的脚，一边在心中许愿，那件事就会实现”。</font></td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>病の沼<br><font color=DarkCyan>病之沼</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>広大な湿地帯で、様々な植物や動物が繁殖している。昔疫病が蔓延しこの名前がつけられたが、フィガロの手によって今は人も住めるように開拓された。水に恵まれる雨季には、「病の沼」という名前からは想像もできないほど美味しい果物が採れ、地上の楽園と言われている。<br><font color=DarkCyan>广阔的沼泽地带，有着多种多样的植物和动物繁衍生息。过去曾经疫病蔓延，因此有了这个名字，后来经费加罗之手开拓，如今已经成为人类能居住的场所。雨季期间雨水丰沛，出产的水果的美味程度从“病之沼”这个名字中几乎难以想象，被称为人间的乐园。</font></td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>ティコ湖<br><font color=DarkCyan>第谷湖</font></td>
+					<td>育成地图<br>地点主线《ティコ湖》(1)</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>南東の果ての平原にある。<br>遥か昔、隕石が落下した跡に雨水が溜まり、巨大な湖になった。鏡のように空模様を映す湖面の美しさで名高い。かつてこの地を訪れた詩人の『星の湖』という詩は、今でも国を超えて愛されている。ルチルとミチルの両親はこの地で出会い、恋に落ちた。<br><font color=DarkCyan>位于东南尽头的平原上。<br>很久以前的陨石坠落之处积攒了雨水，形成了巨大的湖。明亮如镜的湖面倒映着天空的样子是颇具盛名的美景。过去造访此地的诗人写下了名为《星之湖》的诗篇，至今仍为各国人民喜爱。卢蒂尔与米蒂尔的双亲就是在这里相遇并坠入爱河。</font></td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>レイタ山脈<br><font color=DarkCyan>里伊塔山脉</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>その雄大な景色は南の国でも有名。険しくも自然豊かな土地で、この地で暮らす人々は互いに協力しながら、家族ぐるみで手工業や牧畜などを行い、生計を立てている。レノックスは毎年春になるとこの山に登り、羊を放牧しながら夏を過ごしていた。<br><font color=DarkCyan>壮观的景色在南国中也格外有名。这里地势险峻，生态丰饶，生活在这里的人们相互帮助，全家一同以手工业和畜牧业为生。雷诺克斯每年开春便会上山，在放牧中度过夏季。</font></td>
+				</tr>
+				<tr>
+					<td>21</td>
+					<td>雲の街<br><font color=DarkCyan>云之街</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>開拓中の土地ということもあり荒野も多いが、穏やかな雰囲気のある田舎町。街の人々も気さくで優しく、魔法使いに対する差別が少ない。人と魔法使いが助け合いながら共生している。子供たちが集う学校や、フィガロの診療所も近くにある。<br><font color=DarkCyan>由于这里还在开拓中，仍有很多荒野地带，不过是一处安稳平和的小村庄。村民们直爽善良，不怎么有对魔法使的歧视。人类和魔法使相互帮助，共同生活。孩子们的学校和费加罗的诊所也在附近。</font></td>
+				</tr>
+				<tr>
+					<td>22</td>
+					<td>ボルダ島<br><font color=DarkCyan>波达岛</font></td>
+					<td>育成地图</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>西の国にある、観光地として有名な島。透き通った青い海に、まぶしいほどの白い砂浜が美しい。きれいな貝殻を砂浜で見つけて親しい相手に送る週間[習慣？]があり、日ごろの感謝の気持ちをこめて、貝殻でアクセサリーや小箱を作るのがおすすめ。何かの記念に旅行にくる人も多いらしい。<br><font color=DarkCyan>地处西之国，作为旅游胜地而闻名的岛屿。澄澈碧蓝的海水和耀眼的白色沙滩十分美丽。这里有着在沙滩上寻找漂亮的贝壳送给亲近的人的风俗，推荐用贝壳制作成装饰品或者小盒子作为礼物，以表达平日的感谢之情。作为某件事情的纪念而去旅行的人也很多。</font></td>
+				</tr>
+				<tr>
+					<td>S-07</td>
+					<td>月の湖<br><font color=DarkCyan>月之湖</font></td>
+					<td>地点主线《死の湖》(1)</td>
+					<td>★</td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>中央と北の国境にある。<br><font color=DarkCyan>位于中央之国和北之国的国境。</font></td>
+				</tr>
+				<tr>
+					<td>E-88</td>
+					<td>深淵の谷<br><font color=DarkCyan>深渊之谷</font></td>
+					<td>活动《悠久想う未知へのカーソス》Event Story (2)</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td>レイタ山脈を超えた先にある谷。南の国でもかなり辺境。<br>谷を囲むように荒野が続いていて、昼夜の寒暖差がかなり激しい。<br>地面を割ったような、大穴が特に見もの。その穴の中は、普通に生きてたら、まずお目にかかれない薬草や鉱石がごろごろしてる。<br><font color=DarkCyan>越过里伊塔山脉之后的山谷。在南国中也算是格外毗邻边境的地带。<br>仿佛环绕着山谷的旷野不断延伸，昼夜温差极大。<br>仿佛撕裂地面一般的大洞是值得一看的景观。在洞中，通常难得一见的药草、矿石等比比皆是。</font></td>
+				</tr>
+				<tr>
+					<td>E-106</td>
+					<td>紅蓮炎山<br><font color=DarkCyan>红莲炎山</font></td>
+					<td>活动《紅蓮の大地で遊ぶ愛し子》Event Story (1,2)</td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>北の国の辺境の海沿いに火山地帯。<br>書物にもわずかにしか載ってない、原始の自然が支配する灼熱の荒原。独自の生態系もあるっていわれるけど、その全ては謎に包まれている。不定期に噴火して、地形がよく変わる。<br>精霊の力が強いせいで、彼らの機嫌を損ねると、すぐに噴煙が上がって、地鳴りが起きる。<br><font color=DarkCyan>北国边境海边的火山地带。<br>书籍上都少有记载，处于原始自然支配下的灼热荒原。据说有独特的生态系统，但其面貌仍迷雾重重。不定期发生火山喷发，致使地形大幅改变。<br>精灵的力量很强，因此一旦得罪它们，就会立刻火山喷烟、大地轰鸣。</font></td>
+				</tr>
+				<tr>
+					<td>E-108</td>
+					<td>ルメール領<br><font color=DarkCyan>勒梅尔领地</font></td>
+					<td>活动《散花奏でる涙のオブリガート》Event Story (1)</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td>西の国の有力貴族ロイド・ルメールの領。<br><font color=DarkCyan>西国的有权势的贵族罗伊德·勒梅尔的领地。</font></td>
+				</tr>
+				<tr>
+					<td>E-110</td>
+					<td>イライジャの館<br><font color=DarkCyan>以利亚宅邸</font></td>
+					<td>活动《流離の神に捧ぐ祈りは》Event Story (1,2)</td>
+					<td></td>
+					<td></td>
+					<td>★</td>
+					<td></td>
+					<td></td>
+					<td>北に近い、東の森の奥にある廃れた館。<br><font color=DarkCyan>临近北国、位于东国森林深处的荒凉宅邸。</font></td>
+				</tr>
+			</table>
+		</div>
+
+		<hr>
+		<img src=./img/oz_purple.png /><br>
+		来都来了看看袄<br>
+
+		<div class="notes" id="reference">
+			参考资料：<br>
+			1. <a href="https://gamerch.com/wizard-promise/">Gamerch非官方攻略</a>（直接摘用了食材图片及描述信息、基础地点描述信息的日文）<br>
+			2. <a href="https://tableconvert.com/">TableConvert</a>（非常好用的表格转换工具网站）<br>
+		</div>
+	</div>
+
+	<script>
+		const mainTable = document.getElementById('mainTable');
+		const mainTr = mainTable.getElementsByTagName('tr');
+		const checkboxes = document.querySelectorAll('input[type="checkbox"][name="country"]');
+
+		//全选按钮和清空按钮
+		document.getElementById("checkAll").addEventListener('click', function(){
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = true;
+				//手动触发change事件
+				let event = new Event('change');
+				checkbox.dispatchEvent(event);
+			})
+		})
+		
+		document.getElementById("checkNone").addEventListener('click', function(){
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = false;
+				//手动触发change事件
+				let event = new Event('change');
+				checkbox.dispatchEvent(event);
+			})
+		})
+
+		//勾选国别时触发主表筛选
+		checkboxes.forEach(function(checkbox){
+			checkbox.addEventListener('change', function() {
+				// 记录复选框个数
+				let j = 0;
+				checkboxes.forEach(function(checkbox) {
+					if (checkbox.checked){
+						j++;
+					}
+				})
+				
+				// 跳过表头，遍历每行
+				for (let i = 1; i < mainTr.length; i++) {
+					let cells = mainTr[i].getElementsByTagName('td');
+					// 如果所有国别全部勾选（5个复选框），则所有行全部显示
+					let showRow = j==5 ? true : false;
+
+					checkboxes.forEach(function(checkbox) {
+						if (checkbox.checked) {
+						// 如果复选框被选中，检查对应列是否为★
+							if (cells[checkbox.value].textContent.trim() === '★') {
+								showRow = true; // 如果为★，则显示该行
+							}
+						}
+					});
+
+					if (showRow) {
+						mainTr[i].classList.remove('hidden');
+					} else {
+						mainTr[i].classList.add('hidden');
+					}
+				}
+			})
+		})
+
+		//定义函数：按文本筛选含相应内容的行
+		function filterTableByText(key) {
+			let filteredTable = document.getElementById(key+'Table');
+			let allTr = filteredTable.getElementsByTagName('tr');
+			let filter = document.getElementById('filterInputText_'+key).value;
+
+			// 跳过表头
+			for (let i = 1; i < allTr.length; i++) {
+				let txtValue = allTr[i].textContent || allTr[i].innerText;
+				allTr[i].style.display = txtValue.toLowerCase().indexOf(filter.toLowerCase()) > -1 ? '' : 'none';
+
+			}
+		}
+
+	
+	</script>
+
 </body>
 </html>
