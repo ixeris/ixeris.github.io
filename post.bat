@@ -9,9 +9,9 @@ git commit -m "%comments%"
 git push origin hexo
 
 ::若改动config
-::hexo clean && hexo g && hexo d
+hexo clean && hexo g && hexo d
 
 ::若未改动config
-hexo d
+::hexo d
 
 pause
