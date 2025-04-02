@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>费加罗2025愚人节</title>
+
+    <style>
+        #popup {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+            z-index: 1000;
+        }
+        #popup img {
+            max-width: 100%;
+            height: auto;
+        }
+        #overlay {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        #follower {
+            position: absolute;
+            width: 100px; /* 你可以根据需要调整图片的大小 */
+            height: 100px;
+            background-size: cover; /* 确保图片按比例缩放 */
+            pointer-events: none; /* 防止图片阻挡鼠标事件 */
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #playPauseButton {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 4;
+            position: absolute;
+            top:20px;
+            left:20px;
+        } 
+
+        #description{
+            margin-top: 100px; 
+            font-size: large;
+            line-height: 150%;
+        }
+    </style>
+
+    <script>
+        var x, y;
+
+        function dodge(){
+            var style = document.all.layerNo.style
+            var body = window.document.body;
+
+            id1 = (parseInt(style.left)+ parseInt(style.width)/2)>x?1:-1
+            id2 = (parseInt(style.top)+ parseInt(style.height)/2)>y?1:-1
+
+            //计算躲避的位移
+            var left = parseInt(style.left) + Math.round((Math.random()*id1*1.5) * parseInt(style.width))
+            var top = parseInt(style.top) + Math.round((Math.random()*id2*1.5) * parseInt(style.height))
+           
+            if(left<0)
+                left = parseInt(style.left) + parseInt(style.width)
+            if(left + parseInt(style.width) > window.innerWidth)
+                left = parseInt(style.left) - parseInt(style.width)
+ 
+            if(top<0)
+                top = parseInt(style.top) + parseInt(style.height)
+            if(top + parseInt(style.height) > window.innerHeight)
+                top = parseInt(style.top) - parseInt(style.height)
+
+            eval("document.all.layerNo.style.left = left+'px'");
+            eval("document.all.layerNo.style.top = top+'px'");
+
+        }
+
+
+        function catchMe(){
+            var style = document.all.layerYes.style;
+
+            style.left = (x -parseInt(style.width)/ 2 - parseInt(style.left)) /20 + parseInt(style.left)+ "px" 
+            style.top = (y -parseInt(style.height)/ 2 - parseInt(style.top)) /20 + parseInt(style.top) + "px" 
+
+            setTimeout("catchMe()",80);
+        }
+
+        function onMouseMove(){
+            x = event.clientX;
+            y = event.clientY;
+        }
+
+    </script>
+</head>
+
+<body style="background-color:darkslategray;" onmousemove="onMouseMove()" onload="catchMe()" oncontextmenu="event.returnValue=false">
+  
+    <div id="activeArea" style="background-image: url('./img_fgrGame/sea.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;" >
+        <canvas id="snow"></canvas>   
+        <div style="position: absolute; width:100vw; top:0; left:0">
+            <audio id="BGM" src="./img_fgrGame/FigaroBDayMusicbox.mp3" loop="true"></audio> 
+            <img id="playPauseButton" src="./img_fgrGame/music_on.png">
+
+            <div id="description">
+                <p style="text-align: center;">来帮费加罗找到真爱吧<br>
+                    <span style="font-weight: bold; font-size:larger">点击红心<span style="color:crimson">❤</span>获得<span style="color:crimson">永恒的爱！</span><br></span> 
+                    <span style="font-weight: bold; color: lightsteelblue">不要去触碰雪花的幻影</span>           
+                </p>
+            </div>
+        </div>
+    </div>
+        
+    <div id="layerYes" style="position:absolute; left:278px; top:308px; width:50px; height: 50px; z-index:1; cursor: pointer" >
+        <img id="picture" src="./img_fgrGame/yes.png" width="50" height="50">
+    </div>
+    
+    <div id="layerNo" style="position:absolute; left:514px; top:271px; width:60px; height: 60px; z-index:2" onmouseover="dodge()">
+        <img src="./img_fgrGame/no.png" width="60" height="60">
+    </div>
+    
+    <div id="follower">
+        <img src="./img_fgrGame/figaro.png">
+    </div>
+
+    <div id="overlay"></div>
+    <div style="text-align: center" id="popup">
+        <img src="./img_fgrGame/tag.png" width="100px"> 
+        <p style="font-weight: bold">费加罗 获得了 <span style="color:BlueViolet">孤独</span>！</p> 
+        <button id="close" align="center">关闭</button>
+    </div>
+
+    <script>//tag获得
+        // 获取元素
+        const trigger = document.getElementById('layerYes');
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        const closeButton = document.getElementById('close');
+
+        // 点击触发元素显示弹出层
+        trigger.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+        });
+
+        // 点击关闭按钮隐藏弹出层
+        closeButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        });
+
+        // 点击覆盖层隐藏弹出层
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>//鼠标追踪（fgr)
+        // 获取图片元素
+        const follower = document.getElementById('follower');
+
+        // 监听鼠标移动事件
+        document.addEventListener('mousemove', (event) => {
+            // 获取鼠标的当前位置
+ /*         const x = event.clientX;
+            const y = event.clientY;
+*/
+            // 设置图片的位置为鼠标的位置
+            follower.style.left = `${x - 50}px`; // 减去图片宽度的一半，使图片中心对准鼠标
+            follower.style.top = `${y - 50}px`;  // 减去图片高度的一半，使图片中心对准鼠标
+        });
+    </script>
+
+    <script>//音频播放
+        // 获取音频元素和图片按钮元素
+        const audio = document.getElementById('BGM');
+        const playPauseButton = document.getElementById('playPauseButton');
+
+        // 初始播放状态
+        let isPlaying = false;
+
+        // 切换播放/暂停状态
+        playPauseButton.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                playPauseButton.src = "./img_fgrGame/music_on.png"; // 切换回播放按钮图片
+            } else {
+                audio.play();
+                playPauseButton.src = './img_fgrGame/music_off.png'; // 切换为暂停按钮图片
+            }
+            // 更新播放状态
+            isPlaying = !isPlaying;
+        });
+    </script>
+
+    <script>//雪花
+    document.addEventListener('DOMContentLoaded', function() {
+        var canvas = document.getElementById('snow');
+        var ctx = canvas.getContext('2d');
+     
+        // 设置 canvas 的大小为全屏
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+     
+        // 雪花的数量
+        var numberOfSnowflakes = 100;
+        var snowflakes = [];
+     
+        for (var i = 0; i < numberOfSnowflakes; i++) {
+            snowflakes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 4 + 1,
+                density: Math.random() * numberOfSnowflakes
+            });
+        }
+     
+        // 绘制雪花
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+     
+            for (var i = 0; i < numberOfSnowflakes; i++) {
+                var snowflake = snowflakes[i];
+                ctx.moveTo(snowflake.x, snowflake.y);
+                ctx.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2, true);
+            }
+     
+            ctx.fill();
+            moveSnowflakes();
+        }
+     
+        // 移动雪花
+        function moveSnowflakes() {
+            for (var i = 0; i < numberOfSnowflakes; i++) {
+                var snowflake = snowflakes[i];
+                snowflake.y += Math.pow(snowflake.density, 0.1 + 0.2*Math.random()) + 1;
+                snowflake.x += Math.sin(snowflake.y);
+     
+                // 当雪花到达屏幕底部时，重新设置它们的位置
+                if (snowflake.y > canvas.height) {
+                    snowflakes[i] = {
+                        x: Math.random() * canvas.width,
+                        y: 0,
+                        radius: snowflake.radius,
+                        density: snowflake.density
+                    };
+                }
+            }
+        }
+     
+        // 使用 requestAnimationFrame 来持续绘制雪花
+        function animate() {
+            requestAnimationFrame(animate);
+            drawSnowflakes();
+        }
+     
+        animate();
+    });
+    </script>
+
+</body>
+</html>
