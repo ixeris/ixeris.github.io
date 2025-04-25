@@ -9,7 +9,6 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-image: url('img/background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -22,21 +21,32 @@
             overflow: hidden;
         }
 
-        .image-container {
+        .responsive-container {
             position: relative;
-            width: 800px;
-            height: 800px;
-            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .foreground-img {
+        .image-container {
+            position: relative;
+            width: min(800px, 100vw, 100vh); 
+            height: min(800px, 100vw, 100vh); 
+            aspect-ratio: 1;
+            bottom: 0;
+        }
+
+        .layer {
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s, z-index 0.3s;
+            object-fit: contain;
+            bottom: 0;
         }
-                
+                        
         #cake {
             cursor: pointer;
             z-index: 2;
@@ -47,39 +57,47 @@
         }
                 
         #cake:hover {
-            transform: scale(1.05);
             z-index: 3;
+            filter: 
+                drop-shadow(0 0 2px gold) 
+                drop-shadow(0 0 2px gold) 
+                drop-shadow(0 0 2px #ff0000);
+            transition: filter 0.2s, transform 0.2s;
         }
 
         #gift-boxes {
-            display: none;
+            display: none;       
             position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 4;
+            width: 100%; 
+            height: 100%; 
+            z-index: 9;
         }
         
         .gift-box {
             position: absolute;
             cursor: pointer;
-            transition: transform 0.3s, z-index 0.3s;
+            --base-scale: 1; /* 基础缩放变量 */
+            transform: scale(var(--base-scale));
+            transform-origin: center bottom;
             z-index: 1;
             /* 默认部分重叠 */
             margin-left: -20px;
         }
         
         .gift-box:hover {
-            transform: scale(1.1);
+            transform: scale(var(--base-scale)) scale(1.1); 
             transform-origin: bottom;
-            z-index: 10;
+            transition: transform 0.3s;
         }
 
         #table{
-            position:absolute;
+            display: none;
+            position:absolute; 
+            aspect-ratio: 1;
             bottom: 0;
-            width: auto;
-            height: auto;
-            z-index: 6;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
         .modal {
@@ -100,18 +118,74 @@
             padding: 30px;
             border-radius: 10px;
             width: 80%;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow: hidden;
             position: relative;
         }
         
-        .modal-body {
-            max-height: calc(80vh - 100px);
+        /* 根据data-content-type属性应用不同样式 */
+        .modal-content[data-content-type="text"] .modal-body {
+            max-width: 800px;
             overflow-y: auto;
-            padding: 10px;
-            text-align: left;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+            max-height: calc(90vh - 100px); 
         }
-        
+
+        .modal-content[data-content-type="image"] .modal-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content[data-content-type="image"] .modal-body img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .modal-content[data-content-type="video"] .modal-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content[data-content-type="video"] .modal-body video {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+        }
+
+        .modal-content[data-content-type="carousel"] .modal-body {
+            max-width: 100%;
+            max-height: 80vh;
+            margin: 0 auto;
+        }
+
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .modal-content[data-content-type="text"] .modal-body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .modal-content[data-content-type="video"] .modal-body video {
+                width: 100%;
+                height: auto;
+            }
+        }
+
         .close-modal {
             position: absolute;
             top: 10px;
@@ -132,14 +206,16 @@
             display: flex;
             overflow: hidden;
             width: 100%;
-            height: 300px;
+            height: calc(100% - 40px); /* 为说明文字留出空间 */
+            position: relative; 
         }
         
         .carousel-image {
             min-width: 100%;
+            height:auto;
             transition: transform 0.5s ease;
-            object-fit: contain;
-            max-height: 300px;
+            object-fit: scale-down;
+            max-height: 70vh;
         }
         
         .carousel-btn {
@@ -181,8 +257,21 @@
             background-color: #333;
         }
 
+        .carousel-caption {
+            text-align: center;
+            padding: 5px;
+            height: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
         .title{
             font-weight: bold;
+            font-size: 24px;
+        }
+
+        .notes{
+            color: gray;
         }
         
         audio {
@@ -192,130 +281,188 @@
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img id="oz" class="foreground-img">
-        <img id="cake" class="foreground-img">
+    <div class="responsive-container">
+        <div class="image-container">
+            <img id="oz" class="layer">
+            <img id="cake" class="layer">
 
-        <div id="gift-boxes">
-            <img src="img/gift-e.png" class="gift-box" 
-            style="bottom: 214px; left: 30%; z-index: 1;" 
-            data-content="努图谷图展示<br>
-               <div class='carousel'>
-                    <div class='carousel-images'>
-                        <img src='img/album/1.jpeg' class='carousel-image'>
-                        <img src='img/album/2.jpg' class='carousel-image'>
-                        <img src='img/album/3.jpeg' class='carousel-image'>
-                        <img src='img/album/4.jpg' class='carousel-image'>
-                        <img src='img/album/5.jpg' class='carousel-image'>
+            <div id="gift-boxes">
+                <img src="img/gift-e.png" class="gift-box" 
+                style="bottom: 23%; left: 34%; z-index: 2;" 
+                data-content-type="video"
+                data-content="努视频展示<br>
+                    <video width='600' height='800' controls>
+                        <source src='video/video1.mp4' type='video/mp4'>
+                    </video>
+                ">
+                
+                <img src="img/gift-s.png" class="gift-box" 
+                style="bottom: 22%; left: 50%; z-index: 3;" 
+                data-content-type="text"
+                data-content="
+                    <span class='title'>六个字符</span>
+                    <br><hr><br>
+                    <span class='text'>
+                        夜深，睡不安稳的费加罗听到房间外断续的脚步声。放平时他是不会多加理会的。它可以是幻听，来自双子的使魔，某件奇妙收藏里徘徊的幻影……以及近来多出的可能性：奥兹的脚步声。诸如此类的选项太多，费加罗疲于一一确认。但明天是个有着小小特殊性的日子，为了避免不必要的麻烦，费加罗叹口气，还是点燃了照明的烛台。光点串联、晕染渲开的视野连通走廊，那一端，小小的、披散头发的身影正仰头看向通高到天顶的落地窗。<br>
+                        <br>
+                        “奥兹。”他称呼这个名字，这个不知道从何而来，直到不久前都无法确认是否理解这个称呼含义的对象回头看了过来。费加罗视线对上赤红的那双眼睛，想要从中读出别的东西，但最后只能徒劳地自我安慰，至少奥兹能够明白这是在叫他。<br>
+                        <br>
+                        命名，这正是奥兹学习语言的开始。北双领着他到费加罗跟前那天把他的“教育”交给了费加罗。说是教育，费加罗能做的更像驯化。运用玛纳石与北双在各处设下的多种结界进行配合，对奥兹利诱威逼。语言只是在诱饵与强迫的拉锯中无力的点缀，这座建筑，这个房间，这副刀叉，这对纽扣，这两个人，我和你。我是费加罗。你是奥兹。<br>
+                        <br>
+                        “睡不着？”<br>
+                        “……”<br>
+                        <br>
+                        奥兹摇头。费加罗习惯性地等了片刻，但奥兹显然不是会花时间组织措辞给出更多信息的人。点头、摇头、发呆、攻击。这是奥兹常见的表达的方式，他至今还没有开口说过任何东西，但给出回应的时机都可以看出他对语言的理解越发全面，只是没有必要用相同的语言给出回应所以从未开口过。奥兹平日的行为让人不难看出他的野生生活用不上半句话语：观察、追捕、猎杀、收获。这是奥兹与世界常有的互动。此刻他仰着脸，和费加罗对视，共同沉默着，费加罗先移开了目光，游离如无形的触肢划过他们头顶之间的距离，缩回至盘踞的原处。到底是在观察？还是在发呆？<br>
+                        <br>
+                        Possideo费加罗念咒，从奥兹眼前领出橱柜里的杯子，热牛奶蒸出热气缓慢上升，奥兹的眼神跟着向上微微游离。噢，在发呆。<br>
+                        <br>
+                        “喝掉它吧。”费加罗和奥兹对视几秒，“帮助你睡着，或者单纯很好喝。你是喜欢的吧？”他刻意把杯子往前凑了些，让香气代替言语完成引诱。奥兹明显做了几次更深的呼吸，然后凑上来，两只手捧住杯子拿过去，咕嘟嘟喝起来。这家伙除了闹腾还是有这么纯真可爱的时候啊。费加罗想着，忽然想到眼前的孩子还没有确定自己的咒语。<br>
+                        <br>
+                        咒语无非也就是魔法使和精灵沟通的方式。从奥兹不用念咒就能做到的魔法强度来看，咒语能对他产生多大的影响还未可知。选一个词，或是短句。在授课的开始，双子是这么告诉费加罗的，那时他刚来到这里。<br>
+                        <br>
+                        自己喜欢的就不错，向它们展示，偏好也蕴藏了价值，地方的精灵会回应偏好的言辞，符合偏好亦即掌控力量。但无需刻意讨好，从精灵和你之间的联系入手就是不错的开始。北之双子对他说，在发现他熟练运用交流语言之外，仍没有决定向精灵宣言自己内心的措辞时，笑着如此提议引导着。<br>
+                        <br>
+                        流浪时，从海面下沉之后，明明没有做任何努力，却感受到了精灵的帮助。活下去。活下去。像是替他做了选择——Possideo——控制、做出选择与受控于选择。<br>
+                        <br>
+                        杯子里的牛奶被喝光了。空空的容器被对面推到他身上，轻轻一撞。费加罗回过神，叹口气，挥手把空杯收起，又看了看奥兹，忍不住笑了起来，伸手擦了擦奥兹的脸：从视线范围内慢慢地接近，不激起警惕和反击，在他厌烦前及时收回手。<br>
+                        <br>
+                        “要不要出门？双子老师去找明天用得上的素材了。”费加罗观察诱饵的吸引力，“哦对，让你自己骑扫帚，怎么样？”<br>
+                        <br>
+                        强度有余精准不足的魔力使用，奥兹能够做到用魔力推动自己快速移动乃至短暂滞空，达到追猎的效果。斯诺和怀特在带回他的当天就计划给他制作配套的扫帚与魔道具，费加罗清楚这件事，但奥兹没有接触过——对他而言这也不是必需品，但是费加罗看他浮在半空，躲闪双子的攻击，没来由地觉得他是会喜欢骑扫帚的。<br>
+                        <br>
+                        在简单的说明后骑上扫帚，两个人离开室内，像滑入水中的两只海兽，从窗口跃进夜空。悠悠上升，雪原渐渐远去，奥兹在攀升中几次呼吸间就掌握了扫帚方向与速度的调整，在和低而密集交错地枝杈拉开距离后，奥兹上下看看，一压扫帚，以游鱼在激流中从容旋转的姿态向前飞行，时而正向低伏身躯，时而倒悬伸开双臂。天与地倒转，费加罗不远不近地跟在后面，想象奥兹的视角，世界或许就像一本被主动翻阅的画册。在双子的“教学规划”下，奥兹也通过画册学习，各式各样的图画惟妙惟肖地展陈在页面上，奥兹总是在结构解剖说明的章节停顿更久。建筑，植株，骨肉与神经，他用手抓着页面左右翻动，比对前与后的区别，确认表与里的细节。<br>
+                        <br>
+                        时间离黎明越来越近，二人已经飞出了很远。出发时费加罗指向模糊的山脊，那边视野开阔，或许恰好能够欣赏日出。人类的聚落团簇在山脚，受惠于双子的庇护的人类们的小屋都在这里，半夜落了雪，整个村落没有亮着几盏灯，离天亮还早，地上的光点没有星星多。<br>
+                        <br>
+                        奥兹仍然在骑着扫帚打转。天与地倒转，星星的聚落繁荣多产，地上的灯火稀疏而寥落，在那之间是无边的雪白，充斥在世界里，无孔不入，就像精灵。奥兹眯起眼，有些烦躁地晃晃脑袋，费加罗的声音在他身后：“停下来，到山顶了。”<br>
+                        <br>
+                        他们在山上寻了个视野好的位置，用魔法撑开避风的结界，面朝日出的方向，并肩坐在了一起。费加罗悄悄地，像是要避免被任何人——被他自己注意到似的，珍惜着这份宁静。黎明渐近，远方的天空混杂着显出亮色，灰紫、淡粉与嫩黄，不规则地揉在一起，有些像是放隔夜的浓汤在加热时搅动出的波荡。在真正看到太阳之前，先见到的是山亮出的金边，蔓延拓展，光的冲锋不可抵挡地浸透一排山峰。积雪使日光更加清晰地散射：山崖上的沟壑如发光的伤口，渗出金色的血。<br>
+                        <br>
+                        太阳就像是从中诞生。温暖，赤红，微微晃动，无可抵挡地升腾而出，如极远处一丛无人的篝火。费加罗和奥兹坐在一起，眯起眼睛，从光亮边缘微微变形的扭曲里看见摇晃的影子，向世界散射着光芒的太阳，却也像正吞噬着。吞噬着什么？或许这正是周围空无一人的原因。<br>
+                        <br>
+                        长久看向日出在视野里烙下一道烧痕，费加罗慢慢眨眼，抬手止住了奥兹揉眼睛的动作：“走吧，我们回去吧。”<br>
+                        <br>
+                        奥兹只是点头，站起来，任由仍然坐着的费加罗将就着抬手拍干净他衣角上沾的草屑，等待的过程里他晃了晃头，费加罗留意到这个动作，问他：“困了？”奥兹摇头否认，费加罗没再追问，只是返程没让他再自己骑扫帚。<br>
+                        <br>
+                        回到室内时斯诺和怀特还是不在，费加罗转头看奥兹仍然是一副困得发呆的样子，叹口气伸手拽他去房间里睡觉。“明明就困了吧。”反正没说不困啊。真不困就张嘴说不困呗。费加罗胡搅蛮缠地把人塞到床上，奥兹咬了他好几下，但也没用魔法做出实质的反击。太棒了。几天前斯诺和怀特宣布，灾厄夜也即月圆夜，作为弟子的二人应当在最佳位置观赏老师的英姿，“不得以任何形式逃避”他们说，“无论怎样的吾等自会确保你们到场——”他们威胁。奥兹一定是考虑到这点将来的麻烦吧。真是谢谢双子老师啊。只此一次。费加罗伸手用被子把奥兹围起来，奥兹低头，灵活地从中钻出，大步踏过柔软的床面，摇晃着，被费加罗拽住手臂，摔到床上地瞬间拧腰趴下，脸上露出不满的表情。<br>
+                        <br>
+                        最后一起蒙头睡过白天。<br>
+                        <br>
+                        傍晚时睡醒的费加罗睁眼就和一片莹莹的金黄色对上眼神。“???!”他猛地坐起来，变成大人模样的怀特直起身：“小费加罗见到我这么高兴？”<br>
+                        另一边，斯诺正把奥兹的头发抓在手里用丝带系蝴蝶结。奥兹面无表情，仍然有些蔫蔫的样子。“吾等回来就看到你们如此相亲相爱，真是好一幅温馨感人的场面，今夜吾等也要更帅气啊。”<br>
+                        <br>
+                        “什么啊……”费加罗抓着头发从床上下来站好，“您凑这么近，简直像月亮来了一样。”<br>
+                        “这话真是不可爱。”怀特笑着说。<br>
+                        “为什么要变成大人的样子？”费加罗犹豫了一下，还是问了。<br>
+                        “今晚想当帅气的老师呀。”斯诺领着扎好头发的奥兹走过来，“费加罗，就让小奥兹坐你扫帚吧。”<br>
+                        <br>
+                        四人出发，费加罗让奥兹坐在扫帚前面，自己在后面扶住，跟在双子后面向灾厄的反应最为浓烈的方向飞去。<br>
+                        <br>
+                        越接近核心，越能感受到精灵正因为灾厄地逼近而狂躁地冲撞，费加罗忽然意识到什么，低头凑到奥兹脸边：“喂，奥兹，是不是精灵太吵了？”几次呼吸的沉默后，奥兹的头发上下蹭了蹭他的下巴。说中了。异常得到了解释：“我也觉得很吵，对你来说大概更是吵得不行吧。”想明白缘由后他感到一阵轻飘飘的自得，他正想要接着往下说，远处，尖锐的声音突兀地炸响，费加罗下意识捂住奥兹耳朵。<br>
+                        <br>
+                        对战开幕。斯诺和怀特掌心相对，一齐念出咒语。从“父亲大人”和“母亲大人”中流淌出云雾与粘液一般的暗光，和月亮上淌下来的诅咒堪称亲密地相拥，剧烈而密集地炸开成一簇簇的气团。沿着曲线轨迹炸向远方的气团就像是枝头渐次绽开的花丛，细小的亮点像是花粉逸散，却深深腐蚀周围的枯枝与裸石。费加罗开口想要念咒加固防御以免波及，却先察觉到耳边异常的死寂——方才的爆炸声的余波。而奥兹正抬头目不转睛地盯着战斗核心，毫不被他的一惊一乍影响，分神瞥了一眼费加罗仍然放在自己脸边的手。<br>
+                        <br>
+                        噢，对了，这个状态就是在认真观察。费加罗自顾自地总结，奥兹把视线转开了为双子正短距离瞬移着，避开攻击的同时也激活分布在各处的魔法阵，从许多点一齐射出光束，光束纷纷指向灾厄。对奥兹而言，正在上演的魔力冲撞是富有吸引力的精彩场面。至少这会儿看得很享受啊。费加罗放弃了念咒，放下手，只是用魔力把出发前斯诺和怀特给二人的守护魔法加强了些。<br>
+                        <br>
+                        奥兹高兴的表情不明显，更多的是“亮度”的区别。费加罗看看远处，激烈的战斗下，完全同步的二人动作与精巧的魔法技巧的确称得上赏心悦目，只是那些魔法里在自己身上应验过一遍的记忆回放还是少些更好……于是注意力不知不觉更多地转向了奥兹的眼神。<br>
+                        <br>
+                        晶莹的赤色，稳定地看向一处，静止成一汪血池、一枚宝石、一粒种子。无声的死寂中，诅咒与月光都被纳了进去，融进那处圆润的暗红……费加罗再次想到黎明时看见的如同天边无人的篝火的日出。<br>
+                        <br>
+                        火焰忽然剧烈地晃动了一下。费加罗反应不及，先感受到的是扫帚剧烈晃动——一定有什么发生了并且奥兹看见了而自己没有以及双子老师在搞什么啊？！情况紧急，也不管自己在听不见时无法清晰掌握开口的音量，他正要念咒，却被眼前的事打断了注意：<br>
+                        <br>
+                        奥兹张开嘴，做了几个口型，看上去至少有四个、五个甚至六个音节：“——”<br>
+                        <br>
+                        天与地乱转。扫帚彻底失控，二人被掀翻至半空，一股力晃晃悠悠地调整了着陆的方向，让垫在下面的费加罗跌进松软的雪堆而非更尖锐或坚硬的什么。砸飞的碎雪又劈头盖脸地落下到费加罗满身满脸，冰凉的、雪白的、不讲道理的，寒冷将他掩埋，黑暗漫上，而与上一次不同的是，他已经知道自己会幸存。<br>
+                        <br>
+                        在声音之后，画面也暂时退出了他的意识。<br>
+                        <br>
+                        醒来，费加罗首先听到孩童模样的双子闹腾的起哄声。“再来一次！””再叫一次！““小奥兹，最先学会说的是什么？”“说起来，小费加罗的第一句话可是错过了……”“的确可惜！要不要变回婴儿试验一遍？”……<br>
+                        <br>
+                        “二位……”他开口，没太大异样，双子应当已经替他诊治过了，“在说什么危险的话题？那种程度的东西我可不奉陪……再说，‘再来一次’，是什么？”<br>
+                        <br>
+                        三个差不多高的身影凑到床边。费加罗坐起来，左右看看斯诺和怀特脸上大大的笑脸。<br>
+                        <br>
+                        “Voxnox”奥兹说。一杯热牛奶凭空出现在他手上。<br>
+                        <br>
+                        “哎呀——!”双子齐声感慨：“哎呀不是这个！虽然这个也很可爱？‘暗夜之声’也确实是个有你风格的好咒语……”<br>
+                        <br>
+                        奥兹皱眉，明显更烦了，他把牛奶硬往费加罗手里一塞，转身去追斯诺和怀特。身形相近时，双子故作惊慌地“kya——”地跑出房间的样子显出一种费加罗想要再睡上一觉的荒谬。<br>
+                        <br>
+                        “好啦，奥兹。别太不高兴了，谢谢你给我的牛奶，我现在把它喝掉噢。”费加罗喝完最后一口，把杯底展示给奥兹。展示作业似的。奥兹审阅，奥兹批准，奥兹点头。费加罗笑起来，把杯子放到一边。再次开口时，他选了相处这段时间来他所知道的最不会惹恼奥兹的语气：<br>
+                        <br>
+                        “所以，斯诺大人和怀特大人说的，到底是什么？”<br>
+                        <br>
+                        “……”<br>
+                        “Figaro。”奥兹说。<br>
+                        <br>
+                        “嗯？怎么？”费加罗回应，“难道是关于我的事？”<br>
+                        <br>
+                        奥兹眼睛暗了一点。费加罗绞尽脑汁想了一会儿，最后只能从之前的信息入手：“噢，对了，灾厄退回去之后，精灵还吵吗？之前都跟你嚷嚷什么了？”<br>
+                        <br>
+                        他原以为这会是个更好回答的问题，但奥兹盯着他沉默了很久。费加罗等待着，直到他开始走神，奥兹终于开口说：“比之前安静了。我现在不确定说了什么。”<br>
+                        <br>
+                        “噢……那就好。等等，你是什么意思？现在不确定？”费加罗说，“你既然已经选定了自己的咒语，又怎么会不理解其中的意思？方才双子老师也说了吧——暗夜之声，对你而言，灾厄夜前格外鲜明的存在感推动你选择了它，作为与精灵沟通的方式，也的确是合适的……”<br>
+                        <br>
+                        “太吵了。”奥兹开口，费加罗停了下来，然后奥兹接着说了下去，“太吵了，我想告诉你魔法的余波扫过来了，但你看上去没听见。然后我想起来，你、你们用的是不同的语言。”<br>
+                        <br>
+                        “所以我做了选择。”奥兹说，他微微偏头，倾听着什么，接着补充，“噢，现在在叫你的名字，听上去不太高兴。”<br>
+                        <br>
+                        费加罗不确定自己该不该高兴。他忽然记起在奥兹刚来这里时，自己向双子提议说，应该趁早把他变成石头。此刻石头开口，说着人的语言，说着魔法使的语言，他恍惚间仿佛能比奥兹更清晰地听见精灵们的质问，问他这一切是否真的该抵达这里。<br>
+                        <br>
+                        “祝贺你，奥兹。”费加罗最终说，“我很高兴。”<br>
+                        <br>
+                        奥兹看上去不太在乎他这话的源头，见他没别的想说，点点头，完成一项解说的任务似的，转身走了。而费加罗向后仰倒，再次躺在床上，呆呆看着天花板，思考着黎明、日出、无人的篝火与起始的第一句之类的问题。<br>                        
+                    </span>
+                    <br><hr><br>
+                    <span class='notes'>(作者：猪突猛刺)</span>
+                ">
+                
+                <img src="img/gift-w.png" class="gift-box" 
+                style="bottom: 20%; left: 29%; z-index: 4;" 
+                data-content-type="text"
+                data-content="
+                    <span class='title'>一站综合式世界最强生日会</span>
+                    <br><hr><br>
+                    <span class='text'>咕咕，在赶稿了在赶稿了<br>
+                        大约似乎也许可能赶得上吧（费加罗流汗.jpg）<br>
+                    </span>
+                    <br><hr><br>
+                    <span class='notes'>(作者：月面潮汐)</span>
+                ">
+                
+            <img src="img/gift-c.png" class="gift-box" 
+                style="bottom: 19%; left: 41%; z-index: 6;" 
+                data-content-type="carousel"
+                data-content="
+                    <div class='carousel'>
+                        <div class='carousel-images'>
+                            <img src='img/album/1.png' class='carousel-image' data-caption='约稿作品，作者：&lt;a href=&quot;https://mahoyaku.com/&quot; target=&quot;_blank&quot;&gt;作者1&lt;/a&gt;'>
+                            <img src='img/album/2.jpg' class='carousel-image' data-caption='约稿作品，作者：作者2'>
+                            <img src='img/album/3.jpg' class='carousel-image' data-caption='约稿作品，作者：作者2'>
+                        </div>
+                        <button class='carousel-btn prev'>&lt;</button>
+                        <button class='carousel-btn next'>&gt;</button>
+                        <div class='carousel-caption' id='carousel-caption'></div>
+                        <div class='carousel-indicators'></div>
                     </div>
-                    <button class='carousel-btn prev'>&lt;</button>
-                    <button class='carousel-btn next'>&gt;</button>
-                    <div class='carousel-indicators'></div>
-                </div>"
-            >
-            
-            <img src="img/gift-s.png" class="gift-box" 
-            style="bottom: 214px; left: 50%; z-index: 2;" 
-            data-content="<img src='img/pigeon.jpg' class='illustration'>">
-            
-            <img src="img/gift-w.png" class="gift-box" 
-            style="bottom: 214px; left: 20%; z-index: 3;" 
-            data-content="
-                <span class='title'>同人文标题1</span>
-                <br><br>
-                <span class='text'>同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                </span>
-            ">
-            
-           <img src="img/gift-c.png" class="gift-box" 
-            style="bottom: 214px; left: 45%; z-index: 4;" 
-            data-content="约稿展示<br>
-                <img src='img/illustration.jpg' class='illustration'>
-            ">
+                ">
 
-            <img src="img/gift-n.png" class="gift-box" 
-            style="bottom: 214px; left: 65%; z-index: 5;" 
-            data-content="
-                <span class='title'>同人文标题2</span>
-                <br><br>
-                <span class='text'>同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                    同人文正文1<br>
-                </span>
-            ">
+                <img src="img/gift-n.png" class="gift-box" 
+                style="bottom: 20%; left: 63%; z-index: 5;"
+                data-content-type="image" 
+                data-content="
+                    你似乎来到了只有鸽子存在的荒原……<br><br>
+                    <img src='img/pigeon.jpg' class='illustration'>
+                ">
+            </div>
 
-            <img src="img/table.png" id="table">
+            <img src="img/table.png" id="table" class="layer">
 
         </div>
-
     </div>
 
     <div class="modal" id="gift-modal">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-body" id="modal-body"></div>
         </div>
@@ -327,6 +474,8 @@
     //定义各版本引用文件
     const versions = {
         version1: {
+            background: "img/background1.jpg",
+
             cake: "img/cake1.png",
             oz: "img/oz1.png",
             cakeFire: "img/cake1-fire.png",
@@ -335,6 +484,7 @@
             audioType: "audio/mpeg"
         },
         version2: {
+            background: "img/background2.jpg",
             cake: "img/cake2.png",
             oz: "img/oz2.png",
             cakeFire: "img/cake2-fire.png",
@@ -353,13 +503,17 @@
     const cake = document.getElementById('cake');
     const oz = document.getElementById('oz');
     const musicPlayer = document.getElementById('music');
-    
+    const body = document.body;
+
+    const table = document.getElementById('table');
     const giftBoxes = document.getElementById('gift-boxes');
     const modal = document.getElementById('gift-modal');
-    const modalBody = document.getElementById('modal-body');
+    const modalBody = document.getElementById('modal-body');    
+    const modalContent = document.getElementById('modal-content');
     const closeModal = document.querySelector('.close-modal');
 
     //设置初始图片
+    body.style.backgroundImage = `url('${selectedVersion.background}')`;
     cake.src = selectedVersion.cake;
     oz.src = selectedVersion.oz;
 
@@ -370,6 +524,42 @@
     musicPlayer.appendChild(audioSource);    
 
     let isOriginalImage = true;
+
+    //——————
+
+    //整体容器放缩
+    function adjustContainer() {
+        const container = document.querySelector('.image-container');
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        
+        // 动态选择基准尺寸
+        //ver 1: 按屏幕尺寸放缩，最大不超过界线
+        //const baseSize = Math.min(800, vw, vh);
+        //ver 2: 竖屏/横屏分情况
+        const baseSize = vw < vh ? Math.min(vh, Math.max(800, vw/0.5)): Math.max(800, vh);
+        
+        // 应用尺寸（同时设置宽高保证某些浏览器的兼容性）
+        container.style.width = `${baseSize}px`;
+        container.style.height = `${baseSize}px`;
+        
+        // 计算礼物盒缩放比例
+        const scale = baseSize / 800;
+        document.querySelectorAll('.gift-box').forEach(box => {
+            box.style.setProperty('--base-scale', scale);
+        });
+    }
+
+    // 初始化执行
+    window.addEventListener('load', adjustContainer);
+    window.addEventListener('resize', adjustContainer);
+
+    // 确保图片加载后重新计算
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('load', adjustContainer);
+    });
+
+    //——————
         
     // 点击事件处理
     cake.addEventListener('click', function() {
@@ -378,25 +568,51 @@
             musicPlayer.currentTime = 0; // 从头开始播放
             musicPlayer.play();
             
-            //5秒后显示礼物盒
+            //4秒后显示礼物盒
             setTimeout(() => {
                 this.style.display = 'none';
                 giftBoxes.style.display = 'block';
-            }, 5000);
+                table.style.display = 'block';
+            }, 4000);
         
         } 
             
         isOriginalImage = false;
     });
+
+    //放缩礼物盒
+    function scaleGiftBoxes() {
+        const container = document.querySelector('.image-container');
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        
+        const scale = (vw < vh ? Math.min(vh, Math.max(800, vw/0.5)): Math.max(800, vh)) /  800;
+        
+        // 对每个礼物盒应用缩放
+        document.querySelectorAll('.gift-box').forEach(box => {
+            box.style.setProperty('--base-scale', scale);
+        });
+    }
+    
+    window.addEventListener('load', scaleGiftBoxes);
+    window.addEventListener('resize', scaleGiftBoxes);
+
+
     
     // 礼物盒点击事件
     document.querySelectorAll('.gift-box').forEach(box => {
         box.addEventListener('click', function() {
+            const contentType = this.getAttribute('data-content-type');
             modalBody.innerHTML = this.getAttribute('data-content');
+
+            modalContent.setAttribute('data-content-type', contentType);
+
             modal.style.display = 'flex';
             
             // 初始化轮播（如果存在）
-            initCarousel();
+            if (contentType === 'carousel') {
+                initCarousel();
+            }
         });
     });
     
@@ -404,6 +620,7 @@
     // 关闭模态框
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
+        modalContent.removeAttribute('data-content-type');
     });
     
     // 点击模态框外部关闭
@@ -422,7 +639,9 @@
         const images = document.querySelectorAll('.carousel-image');
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
+        const captionElement = document.getElementById('carousel-caption');
         const indicatorsContainer = document.querySelector('.carousel-indicators');
+        
         
         let currentIndex = 0;
         
@@ -445,6 +664,13 @@
             document.querySelectorAll('.indicator').forEach((ind, index) => {
                 ind.classList.toggle('active', index === currentIndex);
             });
+
+            // 更新说明文字
+            if (captionElement) {
+                const currentImage = images[currentIndex];
+                const caption = currentImage.getAttribute('data-caption') || '';
+                captionElement.innerHTML = caption;
+            }
         }
         
         // 前往指定幻灯片
@@ -469,6 +695,12 @@
         images.forEach((img, index) => {
             img.style.transform = `translateX(-${currentIndex * 100}%)`;
         });
+
+        // 初始化说明文字
+        if (captionElement && images.length > 0) {
+            const firstCaption = images[0].getAttribute('data-caption') || '';
+            captionElement.innerHTML = firstCaption;
+        }
         
         // 自动轮播
         let interval = setInterval(() => {
