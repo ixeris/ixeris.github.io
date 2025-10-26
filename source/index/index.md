@@ -62,6 +62,10 @@ date: 2020-07-18 16:18:56
 -  {% post_link midnight-tea-party 午夜茶会%}（北国初代家庭/北师兄弟）
 -  {% post_link 0-01-cm 0.01公分%}（北师兄弟/费加罗中心）
 -  {% post_link match-girl 幻火%}（北师兄弟，随便写的草稿）
+-  {% post_link the-cloud-hat 白云帽%}（fgas伯侄，温馨儿童故事）
+-  {% post_link life-after-death 死后余生%}（fgr中心，北师兄弟（含量低但浓度高），其他角色端水大杂烩）
+
+
 
 翻译：
 -  {% post_link birthday BIRTHDAY%}（fgr中心，路人文）
