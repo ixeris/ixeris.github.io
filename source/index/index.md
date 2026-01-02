@@ -94,6 +94,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link moonshine 月亮酒%}（c骑士, mcr）
 -  {% post_link Dis-Illusion 浮生一梦%}（fst）
 -  {% post_link alouette 云雀%}（as, hs）
+-  {% post_link the-case-of-the-missing-xmas-chicken 圣诞烤鸡失踪事件%}（rq+全员，圣诞故事）
 
 <br>
 
