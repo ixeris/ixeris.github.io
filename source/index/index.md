@@ -65,6 +65,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link the-cloud-hat 白云帽%}（fgas伯侄，温馨儿童故事）
 -  {% post_link life-after-death 死后余生%}（fgr中心，北师兄弟（含量低但浓度高），其他角色端水大杂烩）
 -  {% post_link escape-in-the-summer 夏日出逃%}（北师兄弟，现pa，高中生fgr和小学生oz）
+-  {% post_link sage-library 贤者图书馆%}（北师兄弟，童话故事）
 
 
 
@@ -95,6 +96,7 @@ date: 2020-07-18 16:18:56
 -  {% post_link Dis-Illusion 浮生一梦%}（fst）
 -  {% post_link alouette 云雀%}（as, hs）
 -  {% post_link the-case-of-the-missing-xmas-chicken 圣诞烤鸡失踪事件%}（rq+全员，圣诞故事）
+-  {% post_link phantom-in-the-mirror 镜花水月%}（白狗浮，但掺入很多其他角色）
 
 <br>
 
